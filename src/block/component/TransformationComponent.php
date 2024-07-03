@@ -16,11 +16,11 @@ class TransformationComponent implements BlockComponent {
     private Vector3 $rotationPivot;
 
     public function __construct(
-        Vector3 $translation = [0, 0, 0], 
-        Vector3 $scale = [1, 1, 1], 
-        Vector3 $scalePivot = [0, 0, 0], 
-        Vector3 $rotation = [0, 0, 0], 
-        Vector3 $rotationPivot = [0, 0, 0]
+        Vector3 $translation = new Vector3(0, 0, 0), 
+        Vector3 $scale = new Vector3(1, 1, 1), 
+        Vector3 $scalePivot = new Vector3(0, 0, 0), 
+        Vector3 $rotation = new Vector3(0, 0, 0), 
+        Vector3 $rotationPivot = new Vector3(0, 0, 0)
     ) {
 		$this->translation = $translation;
         $this->scale = $scale;

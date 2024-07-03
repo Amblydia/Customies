@@ -6,9 +6,9 @@ use pocketmine\nbt\tag\CompoundTag;
 
 class DestructibleByExplosionComponent implements BlockComponent {
 
-    private int $explosionResistance;
+    private float $explosionResistance;
 
-    public function __construct(int $explosionResistance = 0.0) {
+    public function __construct(float $explosionResistance = 0.0) {
 		$this->explosionResistance = $explosionResistance;
 	}
 
@@ -18,6 +18,6 @@ class DestructibleByExplosionComponent implements BlockComponent {
 
     public function getValue(): CompoundTag {
         return CompoundTag::create()
-            ->setInt("explosion_resistance", $this->explosionResistance);
+            ->setFloat("explosion_resistance", $this->explosionResistance);
     }
 }
