@@ -12,7 +12,7 @@ class CraftingTableComponent implements BlockComponent {
 
     public function __construct(string $tableName, array $craftingTags) {
 		$this->tableName = $tableName;
-        $this->craftingTags = $craftingTags;
+		$this->craftingTags = $craftingTags;
 	}
 
     public function getName(): string {

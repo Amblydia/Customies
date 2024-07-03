@@ -18,7 +18,7 @@ trait BlockComponentsTrait {
     }
 
     /**
-     * @return array
+     * @return BlockComponents
      */
     public function getComponents(): array {
         return $this->components;

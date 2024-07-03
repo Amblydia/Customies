@@ -6,18 +6,18 @@ use pocketmine\nbt\tag\CompoundTag;
 
 class DisplayNameComponent implements BlockComponent {
 
-    private string $displayName;
+	private string $displayName;
 
-    public function __construct(string $displayName) {
+	public function __construct(string $displayName) {
 		$this->displayName = $displayName;
 	}
 
-    public function getName(): string {
-        return "minecraft:display_name";
-    }
+	public function getName(): string {
+		return "minecraft:display_name";
+	}
 
-    public function getValue(): CompoundTag {
-        return CompoundTag::create()
-            ->setString("value", $this->displayName);
-    }
+	public function getValue(): CompoundTag {
+		return CompoundTag::create()
+			->setString("value", $this->displayName);
+	}
 }

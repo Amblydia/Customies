@@ -6,18 +6,18 @@ use pocketmine\nbt\tag\CompoundTag;
 
 class DestructibleByMiningComponent implements BlockComponent {
 
-    private float $secondsToDestroy;
+	private float $secondsToDestroy;
 
-    public function __construct(float $secondsToDestroy = 0.0) {
+	public function __construct(float $secondsToDestroy = 0.0) {
 		$this->secondsToDestroy = $secondsToDestroy;
 	}
 
-    public function getName(): string {
-        return "minecraft:destructible_by_mining";
-    }
+	public function getName(): string {
+		return "minecraft:destructible_by_mining";
+	}
 
-    public function getValue(): CompoundTag {
-        return CompoundTag::create()
-            ->setFloat("seconds_to_destroy", $this->secondsToDestroy);
-    }
+	public function getValue(): CompoundTag {
+		return CompoundTag::create()
+			->setFloat("seconds_to_destroy", $this->secondsToDestroy);
+	}
 }
