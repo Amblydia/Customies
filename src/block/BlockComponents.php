@@ -7,7 +7,7 @@ use customiesdevs\customies\block\component\BlockComponent;
 interface BlockComponents {
 
 	/**
-	 *  Add component adds a component to the block that can be returned in the getComponents() method to be sent over
+	 * Add component adds a component to the block that can be returned in the getComponents() method to be sent over
 	 * the network.
 	 * @param BlockComponent $component
 	 * @return void
@@ -22,7 +22,7 @@ interface BlockComponents {
 	public function hasComponent(string $name): bool;
 
 	/**
-	 * @return BlockComponent
+	 * @return array
 	 */
 	public function getComponents(): array;
 }

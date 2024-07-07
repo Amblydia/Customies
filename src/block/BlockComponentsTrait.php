@@ -7,9 +7,8 @@ use customiesdevs\customies\block\component\DestructibleByMiningComponent;
 use customiesdevs\customies\block\component\FrictionComponent;
 use customiesdevs\customies\block\component\LightDampeningComponent;
 use customiesdevs\customies\block\component\LightEmissionComponent;
-use customiesdevs\customies\item\component\CreativeCategoryComponent;
-use customiesdevs\customies\item\component\CreativeGroupComponent;
-use customiesdevs\customies\item\CreativeInventoryInfo;
+use customiesdevs\customies\block\component\MaterialInstancesComponent;
+use pocketmine\block\Opaque;
 
 trait BlockComponentsTrait {
 	
@@ -25,19 +24,26 @@ trait BlockComponentsTrait {
 	}
 
 	/**
-	 * @return BlockComponent
+	 * @return array
 	 */
 	public function getComponents(): array {
 		return $this->components;
 	}
 
-	/**
+	
+	/** 
+	 * @todo Work on more default values depending on different pm classes similar to items
 	 * Initializes the block with default components that are required for the block to function correctly.
 	 */
-	protected function initComponent(): void {
+	protected function initComponent(string $texture): void {
 		$this->addComponent(new LightEmissionComponent());
 		$this->addComponent(new LightDampeningComponent());
 		$this->addComponent(new DestructibleByMiningComponent());
 		$this->addComponent(new FrictionComponent());
+		$this->addComponent(new MaterialInstancesComponent("*", $texture));
+
+		if($this instanceof Opaque) {
+			$this->addComponent(new MaterialInstancesComponent("*", $texture, MaterialInstancesComponent::RENDER_METHOD_OPAQUE));
+		}
 	}
 }

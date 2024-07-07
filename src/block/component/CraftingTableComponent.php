@@ -22,6 +22,6 @@ class CraftingTableComponent implements BlockComponent {
 	public function getValue(): CompoundTag {
 		return CompoundTag::create()
 			->setString("table_name", $this->tableName)
-			->setTag("crafting_tags", new ListTag([$this->craftingTags]));
+			->setTag("crafting_tags", new ListTag($this->craftingTags));
 	}
 }
