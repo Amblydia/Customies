@@ -12,14 +12,14 @@ final class StackedByDataComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "minecraft:stacked_by_data";
+		return "stacked_by_data";
 	}
 
-	public function getValue(): array {
-		return ["value" => $this->stackedByData];
+	public function getValue(): bool {
+		return $this->stackedByData;
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

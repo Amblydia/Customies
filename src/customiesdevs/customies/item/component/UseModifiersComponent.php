@@ -14,7 +14,7 @@ final class UseModifiersComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "minecraft:use_modifiers";
+		return "use_modifiers";
 	}
 
 	public function getValue(): array {
@@ -25,6 +25,6 @@ final class UseModifiersComponent implements ItemComponent {
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

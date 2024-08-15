@@ -12,7 +12,7 @@ final class GlintComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "minecraft:glint";
+		return "glint";
 	}
 
 	public function getValue(): bool {
@@ -20,6 +20,6 @@ final class GlintComponent implements ItemComponent {
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

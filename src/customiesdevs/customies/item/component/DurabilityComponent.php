@@ -5,11 +5,9 @@ namespace customiesdevs\customies\item\component;
 
 final class DurabilityComponent implements ItemComponent {
 
-	private array $damageChance;
 	private int $maxDurability;
 
-	public function __construct(array $damageChance, int $maxDurability) {
-		$this->damageChance = $damageChance;
+	public function __construct(int $maxDurability) {
 		$this->maxDurability = $maxDurability;
 	}
 
@@ -19,7 +17,6 @@ final class DurabilityComponent implements ItemComponent {
 
 	public function getValue(): array {
 		return [
-			"damage_chance" => $this->damageChance,
 			"max_durability" => $this->maxDurability
 		];
 	}

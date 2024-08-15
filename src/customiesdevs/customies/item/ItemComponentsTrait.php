@@ -97,7 +97,7 @@ trait ItemComponentsTrait {
 		}
 
 		if($this instanceof Durable) {
-			$this->addComponent(new DurabilityComponent(["min"=> 10, "max" =>40],$this->getMaxDurability()));
+			$this->addComponent(new DurabilityComponent($this->getMaxDurability()));
 		}
 
 		if($this instanceof ProjectileItem) {

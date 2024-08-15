@@ -12,14 +12,14 @@ final class ShouldDespawnComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "minecraft:should_despawn";
+		return "should_despawn";
 	}
 
-	public function getValue(): array {
-		return ["value" => $this->shouldDespawn];
+	public function getValue(): bool {
+		return $this->shouldDespawn;
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }
