@@ -22,6 +22,7 @@ use customiesdevs\customies\item\component\RenderOffsetsComponent;
 use customiesdevs\customies\item\component\ThrowableComponent;
 use customiesdevs\customies\item\component\UseAnimationComponent;
 use customiesdevs\customies\item\component\UseDurationComponent;
+use customiesdevs\customies\item\component\UseModifiersComponent;
 use customiesdevs\customies\item\component\WearableComponent;
 use customiesdevs\customies\util\NBT;
 use pocketmine\entity\Consumable;
@@ -84,8 +85,7 @@ trait ItemComponentsTrait {
 				ArmorInventory::SLOT_FEET => WearableComponent::SLOT_ARMOR_FEET,
 				default => WearableComponent::SLOT_ARMOR
 			};
-			//$this->addComponent(new ArmorComponent($this->getDefensePoints()));
-			$this->addComponent(new WearableComponent(true, $slot));
+			$this->addComponent(new WearableComponent(true, $slot, $this->getDefensePoints()));
 		}
 
 		if($this instanceof Consumable) {
@@ -93,7 +93,7 @@ trait ItemComponentsTrait {
 				$this->addComponent(new FoodComponent(!$this->requiresHunger()));
 			}
 			$this->addComponent(new UseAnimationComponent("eat"));
-			$this->setUseDuration(20);
+			$this->addComponent(new UseModifiersComponent(1.6, 0.35));
 		}
 
 		if($this instanceof Durable) {
@@ -115,37 +115,10 @@ trait ItemComponentsTrait {
 	}
 
 	/**
-	 * When a custom item has a texture that is not 16x16, the item will scale when held in a hand based on the size of
-	 * the texture. This method adds the minecraft:render_offsets component with the correct data for the provided width
-	 * and height of a texture to make the item scale correctly. An optional bool for hand equipped can be used if the
-	 * item is something like a tool or weapon.
-	 */
-	protected function setupRenderOffsets(int $width, int $height, bool $handEquipped = false): void {
-		$this->addComponent(new HandEquippedComponent($handEquipped));
-		//$this->addComponent(new RenderOffsetsComponent($width, $height, $handEquipped));
-	}
-
-	/**
-	 * Change if you want to allow the item to be placed in a player's off-hand or not. This is set to false by default,
-	 * so it only needs to be set if you want to allow it.
-	 */
-	protected function allowOffHand(bool $offHand = true): void {
-		$this->addComponent(new AllowOffHandComponent($offHand));
-	}
-
-	/**
 	 * Set the number of seconds the item should be on cooldown for after being used. By default, the cooldown category
 	 * will be the name of the item, but to share the cooldown across multiple items you can provide a shared category.
 	 */
 	protected function setUseCooldown(float $duration, string $category = ""): void {
 		$this->addComponent(new CooldownComponent($category !== "" ? $category : $this->getName(), $duration));
-	}
-
-	/**
-	 * Set the number of ticks the use animation should play for before consuming the item. There are 20 ticks in a
-	 * second, so providing the number 20 will create a duration of 1 second.
-	 */
-	protected function setUseDuration(int $ticks): void {
-		//$this->addComponent(new UseDurationComponent($ticks));
 	}
 }

@@ -13,6 +13,10 @@ final class DiggerComponent implements ItemComponent {
 	private array $destroySpeeds;
 	private bool $useEfficiency;
 
+	public function __construct(bool $useEfficiency) {
+		$this->useEfficiency = $useEfficiency;
+	}
+
 	public function getName(): string {
 		return "minecraft:digger";
 	}

@@ -5,10 +5,10 @@ namespace customiesdevs\customies\item\component;
 
 final class UseModifiersComponent implements ItemComponent {
 
-	private int $useDuration;
-	private int $movementModifier;
+	private float $useDuration;
+	private float $movementModifier;
 
-	public function __construct(int $useDuration, int $movementModifier) {
+	public function __construct(float $useDuration, float $movementModifier) {
 		$this->useDuration = $useDuration;
 		$this->movementModifier = $movementModifier;
 	}
