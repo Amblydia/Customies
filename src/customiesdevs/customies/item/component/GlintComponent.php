@@ -7,19 +7,19 @@ final class GlintComponent implements ItemComponent {
 
 	private bool $glint;
 
-	public function __construct(bool $glint) {
+	public function __construct(bool $glint = false) {
 		$this->glint = $glint;
 	}
 
 	public function getName(): string {
-		return "glint";
+		return "minecraft:glint";
 	}
 
-	public function getValue(): bool {
-		return $this->glint;
+	public function getValue(): array {
+		return ["value" => $this->glint];
 	}
 
 	public function isProperty(): bool {
-		return true;
+		return false;
 	}
 }

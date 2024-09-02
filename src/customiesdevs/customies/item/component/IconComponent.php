@@ -17,7 +17,6 @@ final class IconComponent implements ItemComponent {
 
 	public function getValue(): array {
 		return [
-			"texture" => $this->texture,
 			"textures" => [
 				"default" => $this->texture
 			]
@@ -25,6 +24,6 @@ final class IconComponent implements ItemComponent {
 	}
 
 	public function isProperty(): bool {
-		return true;
+		return false;
 	}
 }

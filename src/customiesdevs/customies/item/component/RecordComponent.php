@@ -9,7 +9,7 @@ final class RecordComponent implements ItemComponent {
 	private float $duration;
     private string $soundEvent;
 
-	public function __construct(int $comparatorSignal, float $duration, string $soundEvent) {
+	public function __construct(int $comparatorSignal = 1, float $duration, string $soundEvent = "undefined") {
 		$this->comparatorSignal = $comparatorSignal;
 		$this->duration = $duration;
         $this->soundEvent = $soundEvent;

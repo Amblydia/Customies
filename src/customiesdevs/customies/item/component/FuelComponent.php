@@ -7,7 +7,7 @@ final class FuelComponent implements ItemComponent {
 
 	private float $duration;
 
-	public function __construct(float $duration) {
+	public function __construct(float $duration = 0.05) {
 		$this->duration = $duration;
 	}
 

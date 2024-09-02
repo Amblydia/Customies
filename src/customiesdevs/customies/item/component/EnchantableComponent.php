@@ -8,7 +8,7 @@ final class EnchantableComponent implements ItemComponent {
 	private string $slot;
 	private int $value;
 
-	public function __construct(string $slot, int $value) {
+	public function __construct(string $slot, int $value = 0) {
 		$this->slot = $slot;
 		$this->value = $value;
 	}

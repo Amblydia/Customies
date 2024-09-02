@@ -80,14 +80,14 @@ trait ItemComponentsTrait {
 				ArmorInventory::SLOT_FEET => WearableComponent::SLOT_ARMOR_FEET,
 				default => WearableComponent::SLOT_ARMOR
 			};
-			$this->addComponent(new WearableComponent(true, $slot, $this->getDefensePoints()));
+			$this->addComponent(new WearableComponent($slot, $this->getDefensePoints()));
 		}
 
 		if($this instanceof Consumable) {
-			if(($food = $this instanceof Food)) {
+			if($this instanceof Food) {
 				$this->addComponent(new FoodComponent(!$this->requiresHunger()));
 			}
-			$this->addComponent(new UseAnimationComponent("eat"));
+			$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_EAT));
 			$this->addComponent(new UseModifiersComponent(1.6, 0.35));
 		}
 

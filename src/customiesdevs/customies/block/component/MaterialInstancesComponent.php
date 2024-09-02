@@ -21,14 +21,14 @@ class MaterialInstancesComponent implements BlockComponent {
 
 	private string $target;
 	private string $texture;
+	private string $renderMethod;
 	private bool $ambientOcclusion;
 	private bool $faceDimming;
-	private string $renderMethod;
 
 	public function __construct(
 		string $target, 
 		string $texture, 
-		string $renderMethod = self::RENDER_METHOD_OPAQUE, 
+		string $renderMethod = self::RENDER_METHOD_ALPHA_TEST, 
 		bool $ambientOcclusion = true, 
 		bool $faceDimming = true
 	) {
