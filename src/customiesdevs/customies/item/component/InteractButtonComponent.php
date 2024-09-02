@@ -5,9 +5,9 @@ namespace customiesdevs\customies\item\component;
 
 final class InteractButtonComponent implements ItemComponent {
 
-	private bool | string $interactButton;
+	private bool|string $interactButton;
 
-	public function __construct(bool | string $interactButton) {
+	public function __construct(bool|string $interactButton) {
 		$this->interactButton = $interactButton;
 	}
 
@@ -15,7 +15,7 @@ final class InteractButtonComponent implements ItemComponent {
 		return "minecraft:interact_button";
 	}
 
-	public function getValue(): bool | string {
+	public function getValue(): bool|string {
 		return $this->interactButton;
 	}
 

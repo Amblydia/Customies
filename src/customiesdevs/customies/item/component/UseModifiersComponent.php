@@ -14,17 +14,17 @@ final class UseModifiersComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "use_modifiers";
+		return "minecraft:use_modifiers";
 	}
 
 	public function getValue(): array {
 		return [
-			"use_duration" => $this->useDuration,
-			"movement_modifier" => $this->movementModifier
+			"movement_modifier" => $this->movementModifier,
+			"use_duration" => $this->useDuration
 		];
 	}
 
 	public function isProperty(): bool {
-		return true;
+		return false;
 	}
 }

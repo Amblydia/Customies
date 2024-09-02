@@ -96,6 +96,12 @@ final class CustomiesBlockFactory {
 		$propertiesTag = CompoundTag::create();
 		$components = CompoundTag::create();
 
+		if($block instanceof BlockComponents) {
+			foreach ($block->getComponents() as $component) {
+				$components->setTag($component->getName(), $component->getValue());
+			}
+		}
+
 		if($block instanceof Permutable) {
 			$blockPropertyNames = $blockPropertyValues = $blockProperties = [];
 			foreach($block->getBlockProperties() as $blockProperty){
@@ -161,12 +167,6 @@ final class CustomiesBlockFactory {
 				->setString("category", $creativeInfo->getCategory() ?? "")
 				->setString("group", $creativeInfo->getGroup() ?? ""))
 			->setInt("molangVersion", 1);
-
-		if($block instanceof BlockComponents) {
-			foreach ($block->getComponents() as $component) {
-				$components->setTag($component->getName(), $component->getValue());
-			}
-		}
 
 		CreativeInventory::getInstance()->add($block->asItem());
 

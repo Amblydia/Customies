@@ -10,22 +10,13 @@ final class WearableComponent implements ItemComponent {
 	public const SLOT_ARMOR_FEET = "slot.armor.feet";
 	public const SLOT_ARMOR_HEAD = "slot.armor.head";
 	public const SLOT_ARMOR_LEGS = "slot.armor.legs";
-	public const SLOT_CHEST = "slot.chest";
-	public const SLOT_ENDERCHEST = "slot.enderchest";
-	public const SLOT_EQUIPPABLE = "slot.equippable";
-	public const SLOT_HOTBAR = "slot.hotbar";
-	public const SLOT_INVENTORY = "slot.inventory";
-	public const SLOT_NONE = "none";
-	public const SLOT_SADDLE = "slot.saddle";
 	public const SLOT_WEAPON_MAIN_HAND = "slot.weapon.mainhand";
 	public const SLOT_WEAPON_OFF_HAND = "slot.weapon.offhand";
 
-	private bool $dispensable;
 	private string $slot;
 	private int $protection;
 
-	public function __construct(bool $dispensable, string $slot, int $protection = 0) {
-		$this->dispensable = $dispensable;
+	public function __construct(string $slot, int $protection = 0) {
 		$this->slot = $slot;
 		$this->protection = $protection;
 	}
@@ -36,7 +27,6 @@ final class WearableComponent implements ItemComponent {
 
 	public function getValue(): array {
 		return [
-			"dispensable" => $this->dispensable,
 			"slot" => $this->slot,
 			"protection" => $this->protection
 		];
