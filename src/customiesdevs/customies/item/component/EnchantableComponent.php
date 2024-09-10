@@ -14,7 +14,7 @@ final class EnchantableComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "minecraft:enchantable";
+		return "enchantable";
 	}
 
 	public function getValue(): array {
@@ -25,6 +25,6 @@ final class EnchantableComponent implements ItemComponent {
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

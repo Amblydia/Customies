@@ -23,7 +23,7 @@ final class UseAnimationComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "minecraft:use_animation";
+		return "use_animation";
 	}
 
 	public function getValue(): string {
@@ -31,6 +31,6 @@ final class UseAnimationComponent implements ItemComponent {
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

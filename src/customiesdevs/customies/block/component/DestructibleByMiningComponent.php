@@ -18,6 +18,7 @@ class DestructibleByMiningComponent implements BlockComponent {
 
 	public function getValue(): CompoundTag {
 		return CompoundTag::create()
+			->setByte("enabled", 0)
 			->setFloat("value", $this->secondsToDestroy);
 	}
 }

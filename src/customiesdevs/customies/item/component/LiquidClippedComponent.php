@@ -12,14 +12,14 @@ final class LiquidClippedComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "minecraft:liquid_clipped";
+		return "liquid_clipped";
 	}
 
-	public function getValue(): array {
-		return ["value" => $this->liquidClipped];
+	public function getValue(): bool {
+		return $this->liquidClipped;
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

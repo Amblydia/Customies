@@ -8,7 +8,10 @@ class BreathabilityComponent implements BlockComponent {
 
 	private string $breathability;
 
-	public function __construct(string $breathability = "solid") {
+	public const SOLID = "solid";
+	public const AIR = "air";
+
+	public function __construct(string $breathability = self::SOLID) {
 		$this->breathability = $breathability;
 	}
 

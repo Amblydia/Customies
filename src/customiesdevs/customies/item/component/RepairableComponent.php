@@ -8,9 +8,9 @@ final class RepairableComponent implements ItemComponent {
 	private array $items;
     private int|string $repair_amount;
 
-	public function __construct(array $items = [], ?int $repair_amount = null) {
+	public function __construct(array $items, int|string $repair_amount) {
 		$this->items = $items;
-        $this->repair_amount = $repair_amount ?? "math.min(q.remaining_durability + c.other->q.remaining_durability + math.floor(q.max_durability /20), c.other->q.max_durability)"; // Vanilla formula
+        $this->repair_amount = $repair_amount; 
 	}
 
 	public function getName(): string {

@@ -16,7 +16,7 @@ final class InteractButtonComponent implements ItemComponent {
 	}
 
 	public function getValue(): bool|string {
-		return $this->interactButton;
+		return (string)$this->interactButton || ["value" => (bool)$this->interactButton];
 	}
 
 	public function isProperty(): bool {

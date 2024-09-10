@@ -24,6 +24,6 @@ final class IconComponent implements ItemComponent {
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

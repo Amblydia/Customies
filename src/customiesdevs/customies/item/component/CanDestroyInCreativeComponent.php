@@ -12,14 +12,14 @@ final class CanDestroyInCreativeComponent implements ItemComponent {
     }
 
     public function getName(): string {
-        return "minecraft:can_destroy_in_creative";
+        return "can_destroy_in_creative";
     }
 
-    public function getValue(): array {
-        return ["value" => $this->canDestroyInCreative];
+    public function getValue(): bool {
+        return $this->canDestroyInCreative;
     }
 
     public function isProperty(): bool {
-        return false;
+        return true;
     }
 }
