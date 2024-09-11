@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component;
+namespace customiesdevs\customies\item\component\property;
+
+use customiesdevs\customies\item\component\ItemComponent;
 
 final class DamageComponent implements ItemComponent {
 

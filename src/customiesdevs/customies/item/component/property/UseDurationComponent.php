@@ -5,20 +5,20 @@ namespace customiesdevs\customies\item\component\property;
 
 use customiesdevs\customies\item\component\ItemComponent;
 
-final class MirroredArtComponent implements ItemComponent {
+final class UseDurationComponent implements ItemComponent {
 
-	private bool $mirrored;
+	private int $amount;
 
-	public function __construct(bool $mirrored) {
-		$this->mirrored = $mirrored;
+	public function __construct(int $amount) {
+		$this->amount = $amount;
 	}
 
 	public function getName(): string {
-		return "mirrored_art";
+		return "use_duration";
 	}
 
-	public function getValue(): bool {
-		return $this->mirrored;
+	public function getValue(): int {
+		return $this->amount;
 	}
 
 	public function isProperty(): bool {

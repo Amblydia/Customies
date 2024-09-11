@@ -5,20 +5,20 @@ namespace customiesdevs\customies\item\component\property;
 
 use customiesdevs\customies\item\component\ItemComponent;
 
-final class IgnoresPermissionsComponent implements ItemComponent {
+final class LiquidClippedComponent implements ItemComponent {
 
-	private bool $ignore;
+	private bool $liquidClipped;
 
-	public function __construct(bool $ignore) {
-		$this->ignore = $ignore;
+	public function __construct(bool $liquidClipped) {
+		$this->liquidClipped = $liquidClipped;
 	}
 
 	public function getName(): string {
-		return "ignores_permissions";
+		return "liquid_clipped";
 	}
 
 	public function getValue(): bool {
-		return $this->ignore;
+		return $this->liquidClipped;
 	}
 
 	public function isProperty(): bool {

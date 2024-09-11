@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item;
 
-use customiesdevs\customies\item\component\CanDestroyInCreativeComponent;
 use customiesdevs\customies\item\component\CooldownComponent;
-use customiesdevs\customies\item\component\CreativeCategoryComponent;
-use customiesdevs\customies\item\component\CreativeGroupComponent;
 use customiesdevs\customies\item\component\DisplayNameComponent;
 use customiesdevs\customies\item\component\DurabilityComponent;
 use customiesdevs\customies\item\component\FoodComponent;
 use customiesdevs\customies\item\component\FuelComponent;
-use customiesdevs\customies\item\component\IconComponent;
 use customiesdevs\customies\item\component\ItemComponent;
-use customiesdevs\customies\item\component\MaxStackSizeComponent;
 use customiesdevs\customies\item\component\ProjectileComponent;
+use customiesdevs\customies\item\component\property\CanDestroyInCreativeComponent;
+use customiesdevs\customies\item\component\property\CreativeCategoryComponent;
+use customiesdevs\customies\item\component\property\CreativeGroupComponent;
+use customiesdevs\customies\item\component\property\IconComponent;
+use customiesdevs\customies\item\component\property\MaxStackSizeComponent;
+use customiesdevs\customies\item\component\property\UseAnimationComponent;
 use customiesdevs\customies\item\component\ThrowableComponent;
-use customiesdevs\customies\item\component\UseAnimationComponent;
 use customiesdevs\customies\item\component\UseModifiersComponent;
 use customiesdevs\customies\item\component\WearableComponent;
 use customiesdevs\customies\util\NBT;

@@ -5,20 +5,20 @@ namespace customiesdevs\customies\item\component\property;
 
 use customiesdevs\customies\item\component\ItemComponent;
 
-final class AnimatesInToolbarComponent implements ItemComponent {
+final class ShouldDespawnComponent implements ItemComponent {
 
-	private bool $animates;
+	private bool $shouldDespawn;
 
-	public function __construct(bool $animates) {
-		$this->animates = $animates;
+	public function __construct(bool $shouldDespawn) {
+		$this->shouldDespawn = $shouldDespawn;
 	}
 
 	public function getName(): string {
-		return "animates_in_toolbar";
+		return "should_despawn";
 	}
 
 	public function getValue(): bool {
-		return $this->animates;
+		return $this->shouldDespawn;
 	}
 
 	public function isProperty(): bool {

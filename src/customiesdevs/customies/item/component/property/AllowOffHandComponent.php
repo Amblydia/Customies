@@ -5,20 +5,20 @@ namespace customiesdevs\customies\item\component\property;
 
 use customiesdevs\customies\item\component\ItemComponent;
 
-final class RequiresInteractComponent implements ItemComponent {
+final class AllowOffHandComponent implements ItemComponent {
 
-	private bool $interact;
+	private bool $offHand;
 
-	public function __construct(bool $interact) {
-		$this->interact = $interact;
+	public function __construct(bool $offHand = true) {
+		$this->offHand = $offHand;
 	}
 
 	public function getName(): string {
-		return "requires_interact";
+		return "allow_off_hand";
 	}
 
 	public function getValue(): bool {
-		return $this->interact;
+		return $this->offHand;
 	}
 
 	public function isProperty(): bool {
