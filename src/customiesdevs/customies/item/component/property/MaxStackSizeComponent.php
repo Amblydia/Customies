@@ -9,7 +9,7 @@ final class MaxStackSizeComponent implements ItemComponent {
 
 	private int $maxStackSize;
 
-	public function __construct(int $maxStackSize) {
+	public function __construct(int $maxStackSize = 64) {
 		$this->maxStackSize = $maxStackSize;
 	}
 

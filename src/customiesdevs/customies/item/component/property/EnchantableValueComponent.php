@@ -5,20 +5,20 @@ namespace customiesdevs\customies\item\component\property;
 
 use customiesdevs\customies\item\component\ItemComponent;
 
-final class FoilComponent implements ItemComponent {
+final class EnchantableValueComponent implements ItemComponent {
 
-	private bool $foiled;
+	private int $value;
 
-	public function __construct(bool $foiled) {
-		$this->foiled = $foiled;
+	public function __construct(int $value = 0) {
+		$this->value = $value;
 	}
 
 	public function getName(): string {
-		return "foil";
+		return "enchantable_value";
 	}
 
-	public function getValue(): bool {
-		return $this->foiled;
+	public function getValue(): int {
+		return $this->value;
 	}
 
 	public function isProperty(): bool {

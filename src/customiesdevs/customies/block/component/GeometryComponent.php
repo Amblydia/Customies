@@ -18,6 +18,8 @@ class GeometryComponent implements BlockComponent {
 
 	public function getValue(): CompoundTag {
 		return CompoundTag::create()
+			->setTag("bone_visibility", CompoundTag::create())
+			->setString("culling", "")
 			->setString("identifier", $this->geometry);
 	}
 }

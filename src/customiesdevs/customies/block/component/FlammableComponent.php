@@ -20,7 +20,6 @@ class FlammableComponent implements BlockComponent {
 
 	public function getValue(): CompoundTag {
 		return CompoundTag::create()
-			->setByte("enabled", 1)
 			->setInt("catch_chance_modifier", $this->catchChanceModifier)
 			->setInt("destroy_chance_modifier", $this->destroyChanceModifier);
 	}
