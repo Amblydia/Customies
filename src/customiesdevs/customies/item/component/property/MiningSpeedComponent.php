@@ -5,6 +5,7 @@ namespace customiesdevs\customies\item\component\property;
 
 use customiesdevs\customies\item\component\ItemComponent;
 
+// Check this again i think this was removed
 final class MiningSpeedComponent implements ItemComponent {
 
 	private float $speed;

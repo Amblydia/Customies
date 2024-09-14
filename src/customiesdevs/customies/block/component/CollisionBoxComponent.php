@@ -13,7 +13,7 @@ class CollisionBoxComponent implements BlockComponent {
 	private Vector3 $origin;
 	private Vector3 $size;
 
-	public function __construct(bool $useCollisionBox = true, Vector3 $origin = new Vector3(-8.0, 0.0, -8.0), Vector3 $size = new Vector3(16.0, 16.0, 16.0)) {
+	public function __construct(Vector3 $origin = new Vector3(-8.0, 0.0, -8.0), Vector3 $size = new Vector3(16.0, 16.0, 16.0), bool $useCollisionBox = true) {
 		$this->useCollisionBox = $useCollisionBox;
 		$this->origin = $origin;
 		$this->size = $size;

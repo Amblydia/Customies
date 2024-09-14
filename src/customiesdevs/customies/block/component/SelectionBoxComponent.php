@@ -13,10 +13,10 @@ class SelectionBoxComponent implements BlockComponent {
 	private Vector3 $origin;
 	private Vector3 $size;
 
-	public function __construct(bool $useSelectionBox = true, ?Vector3 $origin = null, ?Vector3 $size = null) {
+	public function __construct(?Vector3 $origin = new Vector3(-8.0, 0.0, -8.0), ?Vector3 $size = new Vector3(16.0, 16.0, 16.0), bool $useSelectionBox = true) {
 		$this->useSelectionBox = $useSelectionBox;
-		$this->origin = $origin ?? new Vector3(-8.0, 0.0, -8.0);
-		$this->size = $size ?? new Vector3(16.0, 16.0, 16.0);
+		$this->origin = $origin;
+		$this->size = $size;
 	}
 
 	public function getName(): string {

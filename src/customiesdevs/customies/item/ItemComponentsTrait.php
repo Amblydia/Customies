@@ -29,7 +29,6 @@ use pocketmine\item\Armor;
 use pocketmine\item\Durable;
 use pocketmine\item\Food;
 use pocketmine\item\ProjectileItem;
-use pocketmine\item\Sword;
 use pocketmine\nbt\tag\CompoundTag;
 use RuntimeException;
 
@@ -95,6 +94,7 @@ trait ItemComponentsTrait {
 			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_FOOD]));
 		}
 
+		// remove these in favor of customitem classes? since it would do the same as it
 		if($this instanceof Durable) {
 			$this->addComponent(new DurabilityComponent($this->getMaxDurability()));
 		}
@@ -110,13 +110,6 @@ trait ItemComponentsTrait {
 
 		if($this->getFuelTime() > 0) {
 			$this->addComponent(new FuelComponent($this->getFuelTime()));
-		}
-
-		if($this instanceof Sword) {
-			$this->addComponent(new DamageComponent($this->getAttackPoints()));
-			$this->addComponent(new HandEquippedComponent());
-			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_SWORD]));
-			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_TOOL]));
 		}
 	}
 

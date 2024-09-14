@@ -7,29 +7,38 @@ use customiesdevs\customies\item\ItemComponents;
 use customiesdevs\customies\item\ItemComponentsTrait;
 use customiesdevs\customies\item\{
     component\DurabilityComponent,
-    component\GlintComponent,
-    component\UseModifiersComponent,
-    component\TagsComponent,
-    component\RepairableComponent,
     component\property\AllowOffHandComponent,
-    component\property\CanDestroyInCreativeComponent,
     component\property\DamageComponent,
     component\property\EnchantableSlotComponent,
     component\property\EnchantableValueComponent,
     component\property\HandEquippedComponent,
-    component\property\FoilComponent,
-    component\property\IconComponent,
-    component\property\UseAnimationComponent,
-    component\property\UseDurationComponent,
     component\property\MaxStackSizeComponent
 };
-use pocketmine\item\ItemIdentifier;
 use pocketmine\item\Sword;
-use pocketmine\item\ToolTier;
 use pocketmine\item\Durable;
-use pocketmine\item\TieredTool;
 
 class CustomSword extends Sword implements ItemComponents{
     use ItemComponentsTrait;
-    // todo
+
+    public bool $offhand = false;
+
+    public function setupComponents(){
+        $this->addComponent(new DamageComponent($this->getAttackPoints()));
+        if($this instanceof Durable){
+            $this->addComponent(new DurabilityComponent($this->getMaxDurability()));
+        }
+        $this->addComponent(new MaxStackSizeComponent(1));
+        $this->addComponent(new HandEquippedComponent(true));
+        // $this->addComponent(new EnchantableSlotComponent(EnchantableSlotComponent::SLOT_SWORD));
+        // $this->addComponent(new EnchantableValueComponent(EnchantableValueComponent::TOOL_DIAMOND));
+        $this->addComponent(new AllowOffHandComponent($this->offhand));
+    }
+
+    public function setOffHand(bool $bool = false){
+        $this->offhand = $bool;
+    }
+
+    public function getMaxStackSize(): int{
+        return 1;
+    }
 }

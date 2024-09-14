@@ -1,6 +1,4 @@
-# Customies
-
-[![](https://poggit.pmmp.io/shield.state/Customies)](https://poggit.pmmp.io/p/Customies) [![](https://poggit.pmmp.io/shield.dl.total/Customies)](https://poggit.pmmp.io/p/Customies)
+# Customies-Amblydia
 
 A PocketMine-MP plugin that implements support for custom blocks, items and entities.
 
@@ -10,10 +8,6 @@ A PocketMine-MP plugin that implements support for custom blocks, items and enti
 
 Official Discord community chat for socializing, receiving help with the plugin, and sharing creations. Join in on the
 fun!
-
-## Usage
-
-The usage guides have been moved to the [Customies Wiki](https://github.com/CustomiesDevs/Customies/wiki)!
 
 ## Important Contributors
 
