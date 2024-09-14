@@ -5,9 +5,9 @@ namespace customiesdevs\customies\item\component;
 
 final class FuelComponent implements ItemComponent {
 
-	private float $duration;
+	private float|int $duration;
 
-	public function __construct(float $duration = 0.05) {
+	public function __construct(float|int $duration = 0.05) {
 		$this->duration = $duration;
 	}
 

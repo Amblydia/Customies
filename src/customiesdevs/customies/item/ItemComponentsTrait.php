@@ -10,9 +10,12 @@ use customiesdevs\customies\item\component\FoodComponent;
 use customiesdevs\customies\item\component\FuelComponent;
 use customiesdevs\customies\item\component\ItemComponent;
 use customiesdevs\customies\item\component\ProjectileComponent;
+use customiesdevs\customies\item\component\TagsComponent;
 use customiesdevs\customies\item\component\property\CanDestroyInCreativeComponent;
 use customiesdevs\customies\item\component\property\CreativeCategoryComponent;
 use customiesdevs\customies\item\component\property\CreativeGroupComponent;
+use customiesdevs\customies\item\component\property\DamageComponent;
+use customiesdevs\customies\item\component\property\HandEquippedComponent;
 use customiesdevs\customies\item\component\property\IconComponent;
 use customiesdevs\customies\item\component\property\MaxStackSizeComponent;
 use customiesdevs\customies\item\component\property\UseAnimationComponent;
@@ -26,6 +29,7 @@ use pocketmine\item\Armor;
 use pocketmine\item\Durable;
 use pocketmine\item\Food;
 use pocketmine\item\ProjectileItem;
+use pocketmine\item\Sword;
 use pocketmine\nbt\tag\CompoundTag;
 use RuntimeException;
 
@@ -56,11 +60,8 @@ trait ItemComponentsTrait {
 			}
 			$components->setTag($component->getName(), $tag);
 		}
-		$components->setTag("item_properties", $properties);
-		var_dump(CompoundTag::create()
-		->setTag("components", $components)->toString());
 		return CompoundTag::create()
-			->setTag("components", $components);
+			->setTag("components", $components->setTag("item_properties", $properties));
 	}
 
 	/**
@@ -91,6 +92,7 @@ trait ItemComponentsTrait {
 			}
 			$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_EAT));
 			$this->addComponent(new UseModifiersComponent(1.6, 0.35));
+			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_FOOD]));
 		}
 
 		if($this instanceof Durable) {
@@ -108,6 +110,13 @@ trait ItemComponentsTrait {
 
 		if($this->getFuelTime() > 0) {
 			$this->addComponent(new FuelComponent($this->getFuelTime()));
+		}
+
+		if($this instanceof Sword) {
+			$this->addComponent(new DamageComponent($this->getAttackPoints()));
+			$this->addComponent(new HandEquippedComponent());
+			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_SWORD]));
+			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_TOOL]));
 		}
 	}
 

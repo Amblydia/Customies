@@ -9,7 +9,7 @@ final class FrameCountComponent implements ItemComponent {
 
 	private int $amount;
 
-	public function __construct(int $amount) {
+	public function __construct(int $amount = 1) {
 		$this->amount = $amount;
 	}
 

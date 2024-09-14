@@ -9,10 +9,12 @@ use pocketmine\nbt\tag\ListTag;
 
 class CollisionBoxComponent implements BlockComponent {
 
+	private bool $useCollisionBox;
 	private Vector3 $origin;
 	private Vector3 $size;
 
-	public function __construct(Vector3 $origin = new Vector3(-8.0, 0.0, -8.0), Vector3 $size = new Vector3(16.0, 16.0, 16.0)) {
+	public function __construct(bool $useCollisionBox = true, Vector3 $origin = new Vector3(-8.0, 0.0, -8.0), Vector3 $size = new Vector3(16.0, 16.0, 16.0)) {
+		$this->useCollisionBox = $useCollisionBox;
 		$this->origin = $origin;
 		$this->size = $size;
 	}
@@ -23,7 +25,7 @@ class CollisionBoxComponent implements BlockComponent {
 
 	public function getValue(): CompoundTag {
 		return CompoundTag::create()
-			->setByte("enabled", 1)
+			->setByte("enabled", $this->useCollisionBox ? 1 : 0)
 			->setTag("origin", new ListTag([
 				new FloatTag($this->origin->getX()),
 				new FloatTag($this->origin->getY()),

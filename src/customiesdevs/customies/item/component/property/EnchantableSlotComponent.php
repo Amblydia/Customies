@@ -28,7 +28,7 @@ final class EnchantableSlotComponent implements ItemComponent {
 
 	private string $slot;
 
-	public function __construct(string $slot = EnchantableSlotComponent::SLOT_ALL) {
+	public function __construct(string $slot = self::SLOT_ALL) {
 		$this->slot = $slot;
 	}
 

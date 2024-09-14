@@ -9,7 +9,7 @@ final class ShouldDespawnComponent implements ItemComponent {
 
 	private bool $shouldDespawn;
 
-	public function __construct(bool $shouldDespawn) {
+	public function __construct(bool $shouldDespawn = true) {
 		$this->shouldDespawn = $shouldDespawn;
 	}
 

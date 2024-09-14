@@ -5,6 +5,10 @@ namespace customiesdevs\customies\item\component;
 
 final class TagsComponent implements ItemComponent {
 
+	public const TAG_IS_FOOD = "minecraft:is_food";
+	public const TAG_IS_SWORD = "minecraft:is_sword";
+	public const TAG_IS_TOOL = "minecraft:is_tool";
+
 	private array $tags;
 
 	public function __construct(array $tags) {

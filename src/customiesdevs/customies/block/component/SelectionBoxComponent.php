@@ -9,10 +9,12 @@ use pocketmine\nbt\tag\ListTag;
 
 class SelectionBoxComponent implements BlockComponent {
 
+	private bool $useSelectionBox;
 	private Vector3 $origin;
 	private Vector3 $size;
 
-	public function __construct(?Vector3 $origin = null, ?Vector3 $size = null) {
+	public function __construct(bool $useSelectionBox = true, ?Vector3 $origin = null, ?Vector3 $size = null) {
+		$this->useSelectionBox = $useSelectionBox;
 		$this->origin = $origin ?? new Vector3(-8.0, 0.0, -8.0);
 		$this->size = $size ?? new Vector3(16.0, 16.0, 16.0);
 	}
@@ -23,7 +25,7 @@ class SelectionBoxComponent implements BlockComponent {
 
 	public function getValue(): CompoundTag {
 		return CompoundTag::create()
-			->setByte("enabled", 1)
+			->setByte("enabled", $this->useSelectionBox ? 1 : 0)
 			->setTag("origin", new ListTag([
 				new FloatTag($this->origin->getX()),
 				new FloatTag($this->origin->getY()),
