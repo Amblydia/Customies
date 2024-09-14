@@ -27,11 +27,7 @@ final class CustomiesListener implements Listener {
 	private Experiments $experiments;
 
 	public function __construct() {
-		$this->experiments = new Experiments([
-			// "data_driven_items" is required for custom blocks to render in-game. With this disabled, they will be
-			// shown as the UPDATE texture block.
-			"data_driven_items" => true,
-		], true);
+
 	}
 
 	public function onDataPacketSend(DataPacketSendEvent $event): void {
@@ -53,11 +49,11 @@ final class CustomiesListener implements Listener {
 					$this->cachedItemTable = CustomiesItemFactory::getInstance()->getItemTableEntries();
 					$this->cachedBlockPalette = CustomiesBlockFactory::getInstance()->getBlockPaletteEntries();
 				}
-				$packet->levelSettings->experiments = $this->experiments;
+				//$packet->levelSettings->experiments = $this->experiments;
 				$packet->itemTable = array_merge($packet->itemTable, $this->cachedItemTable);
 				$packet->blockPalette = $this->cachedBlockPalette;
 			} elseif($packet instanceof ResourcePackStackPacket) {
-				$packet->experiments = $this->experiments;
+				//$packet->experiments = $this->experiments;
 			}
 		}
 	}

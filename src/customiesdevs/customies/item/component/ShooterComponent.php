@@ -31,10 +31,12 @@ final class ShooterComponent implements ItemComponent {
 	public function getValue(): array {
 		return [
 			"ammunition" => [
-                "item" => $this->item,
-                "use_offhand" => $this->useOffhand,
-                "search_inventory" => $this->searchInventory,
-                "use_in_creative" => $this->useInCreative
+                [
+                    "item" => $this->item,
+                    "use_offhand" => $this->useOffhand,
+                    "search_inventory" => $this->searchInventory,
+                    "use_in_creative" => $this->useInCreative
+                ]
             ],
 			"charge_on_draw" => $this->chargeOnDraw,
             "max_draw_duration" => $this->maxDrawDuration,

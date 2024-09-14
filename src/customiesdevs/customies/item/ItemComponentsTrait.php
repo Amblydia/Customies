@@ -57,6 +57,8 @@ trait ItemComponentsTrait {
 			$components->setTag($component->getName(), $tag);
 		}
 		$components->setTag("item_properties", $properties);
+		var_dump(CompoundTag::create()
+		->setTag("components", $components)->toString());
 		return CompoundTag::create()
 			->setTag("components", $components);
 	}
