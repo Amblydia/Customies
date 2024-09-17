@@ -77,8 +77,6 @@ Tested in pocketmine with customies
 ```
 "minecraft:food": {
     "can_always_eat": false,
-    "cooldown_time": 0,
-    "cooldown_type": "",
     "nutrition": 3,
     "saturation_modifier": 0.6,
     "using_converts_to": ""
