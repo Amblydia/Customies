@@ -1,4 +1,6 @@
-# ItemComponents Known (1.21)
+# ItemComponents Known (1.21.30)
+Tested in pocketmine with customies
+(they work in vanilla)
 
 ## Components
 
@@ -15,6 +17,13 @@
 "minecraft:cooldown":{
     "category": "attack",
     "duration": 20.0
+}
+```
+
+- `minecraft:dyeable` [Not Tested]
+```
+"minecraft:dyeable": {
+    "default_color":  "#175882"
 }
 ```
 
@@ -113,6 +122,11 @@
 }
 ```
 
+- `minecraft:rarity` [Not Tested]
+```
+"minecraft:rarity": "rare"
+```
+
 - `minecraft:record` [Not Tested]
 [List of SoundEvents](https://learn.microsoft.com/en-us/minecraft/creator/reference/content/itemreference/examples/itemcomponents/minecraft_record?view=minecraft-bedrock-stable)
 `"13", "cat", "blocks", "chirp", "far", "mall", "mellohi", "stal", "strad", "ward", "11", "wait", "pigstep"`
@@ -164,7 +178,7 @@
 ```
 "minecraft:tags": {
     "tags": [
-        "custom_tag"
+        "is_food"
     ]
 }
 ```
