@@ -5,9 +5,13 @@ namespace customiesdevs\customies\item\component;
 
 final class FuelComponent implements ItemComponent {
 
-	private float|int $duration;
+	private float $duration;
 
-	public function __construct(float|int $duration = 0.05) {
+	/**
+	 * Allows this item to be used as fuel in a furnace to 'cook' other items.
+	 * @param float $duration
+	 */
+	public function __construct(float $duration = 0.05) {
 		$this->duration = $duration;
 	}
 

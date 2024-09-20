@@ -9,6 +9,12 @@ final class DurabilityComponent implements ItemComponent {
 	private int $min;
 	private int $max;
 
+	/**
+	 * Sets how much damage the item can take before breaking, and allows the item to be combined at an anvil, grindstone, or crafting table.
+	 * @param int $maxDurability
+	 * @param int $min
+	 * @param int $max
+	 */
 	public function __construct(int $maxDurability, int $min = 100, int $max = 100) {
 		$this->maxDurability = $maxDurability;
 		$this->min = $min;

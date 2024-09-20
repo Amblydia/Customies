@@ -12,6 +12,15 @@ final class ThrowableComponent implements ItemComponent {
 	private float $minDrawDuration;
 	private bool $scalePowerByDrawDuration;
 
+	/**
+	 * Sets the throwable item component.
+	 * @param bool $doSwingAnimation
+	 * @param float $launchPowerScale
+	 * @param float $maxDrawDuration
+	 * @param float $maxLaunchPower
+	 * @param float $minDrawDuration
+	 * @param bool $scalePowerByDrawDuration
+	 */
 	public function __construct(
 		bool $doSwingAnimation = false, 
 		float $launchPowerScale = 1.0,

@@ -1,0 +1,57 @@
+{
+    "components": {
+        "item_properties": {
+            "allow_off_hand": 0,
+            "can_destroy_in_creative": 1,
+            "creative_category": 4,
+            "creative_group": "",
+            "damage": 0,
+            "enchantable_slot": "none",
+            "enchantable_value": 0,
+            "foil": 0,
+            "frame_count": 1,
+            "hand_equipped": 0,
+            "liquid_clipped": 1,
+            "max_stack_size": 64,
+            "minecraft:icon": {
+                "textures": {
+                    "default": "copper_seed"
+                }
+            },
+            "mining_speed": 1,
+            "should_despawn": 1,
+            "stacked_by_data": 0,
+            "use_animation": 0,
+            "use_duration": 0
+        },
+        "item_tags": [],
+        "minecraft:block_placer": {
+            "block": "minecraft:diamond_block",
+            "use_on": [
+                {
+                    "name": "minecraft:glass",
+                    "states": {},
+                    "tags": ""
+                },
+                {
+                    "name": "minecraft:dirt",
+                    "states": {},
+                    "tags": ""
+                },
+                {
+                    "name": "minecraft:stone",
+                    "states": {},
+                    "tags": ""
+                }
+            ]
+        },
+        "minecraft:liquid_clipped": {
+            "value": 1
+        },
+        "minecraft:publisher_on_use_on": {
+            "autoSucceedOnClient": 0
+        }
+    },
+    "id": 263,
+    "name": "test:copper_seed"
+}

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\property;
+namespace customiesdevs\customies\item\component\properties;
 
 use customiesdevs\customies\item\component\ItemComponent;
 
-final class EnchantableValueComponent implements ItemComponent {
+final class EnchantableValueProperty implements ItemComponent {
 
 	public const ARMOR_LEATHER = 15;
 	public const ARMOR_CHAIN = 12;
@@ -26,6 +26,10 @@ final class EnchantableValueComponent implements ItemComponent {
 
 	private int $value;
 
+	/**
+	 * The value of the enchantment (minimum of 0).
+	 * @param int $value
+	 */
 	public function __construct(int $value = 0) {
 		$this->value = $value;
 	}

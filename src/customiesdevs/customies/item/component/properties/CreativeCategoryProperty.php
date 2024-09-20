@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\property;
+namespace customiesdevs\customies\item\component\properties;
 
 use customiesdevs\customies\item\component\ItemComponent;
 use customiesdevs\customies\item\CreativeInventoryInfo;
 
-final class CreativeGroupComponent implements ItemComponent {
+final class CreativeCategoryProperty implements ItemComponent {
 
 	private CreativeInventoryInfo $creativeInfo;
 
@@ -15,11 +15,11 @@ final class CreativeGroupComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "creative_group";
+		return "creative_category";
 	}
 
-	public function getValue(): string {
-		return $this->creativeInfo->getGroup();
+	public function getValue(): int {
+		return $this->creativeInfo->getNumericCategory();
 	}
 
 	public function isProperty(): bool {

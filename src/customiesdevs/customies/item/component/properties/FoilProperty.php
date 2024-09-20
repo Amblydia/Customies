@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component;
+namespace customiesdevs\customies\item\component\properties;
 
-final class GlintComponent implements ItemComponent {
+use customiesdevs\customies\item\component\ItemComponent;
+
+final class FoilProperty implements ItemComponent {
 
 	private bool $value;
 
@@ -16,16 +18,14 @@ final class GlintComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "minecraft:glint";
+		return "foil";
 	}
 
-	public function getValue(): array {
-		return [
-			"value" => $this->value
-		];
+	public function getValue(): bool {
+		return $this->value;
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

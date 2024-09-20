@@ -14,6 +14,17 @@ final class ShooterComponent implements ItemComponent {
     private bool $searchInventory;
     private bool $useInCreative;
 
+    /**
+     * Shooter component compels an item to shoot projectiles, similarly to a bow or crossbow. 
+     * Must have the use_modifiers component in order to function properly.
+     * @param string $item
+     * @param bool $useOffhand
+     * @param bool $searchInventory
+     * @param bool $useInCreative
+     * @param bool $chargeOnDraw
+     * @param float $maxDrawDuration
+     * @param bool $scalePowerByDrawDuration
+     */
 	public function __construct(string $item, bool $useOffhand = false, bool $searchInventory = false, bool $useInCreative = false, bool $chargeOnDraw = false, float $maxDrawDuration = 0.0, bool $scalePowerByDrawDuration = false) {
 		$this->item = $item;
         $this->useOffhand = $useOffhand;

@@ -1,0 +1,72 @@
+{
+    "components": {
+        "item_properties": {
+            "allow_off_hand": 1,
+            "can_destroy_in_creative": 1,
+            "creative_category": 2,
+            "creative_group": "itemGroup.name.crop",
+            "damage": 0,
+            "enchantable_slot": "sword",
+            "enchantable_value": 1,
+            "foil": 1,
+            "frame_count": 1,
+            "hand_equipped": 0,
+            "liquid_clipped": 0,
+            "max_stack_size": 64,
+            "minecraft:icon": {
+                "textures": {
+                    "default": "another_food"
+                }
+            },
+            "mining_speed": 1,
+            "should_despawn": 1,
+            "stacked_by_data": 0,
+            "use_animation": 1,
+            "use_duration": 32
+        },
+        "item_tags": [
+            "minecraft:is_meat",
+            "minecraft:is_food"
+        ],
+        "minecraft:allow_off_hand": {
+            "value": 1
+        },
+        "minecraft:cooldown": {
+            "category": "food",
+            "duration": 0.1
+        },
+        "minecraft:enchantable": {
+            "slot": "sword",
+            "value": 1
+        },
+        "minecraft:food": {
+            "can_always_eat": 1,
+            "nutrition": 4,
+            "saturation_modifier": 0.6,
+            "using_converts_to": {
+                "name": "diamond"
+            }
+        },
+        "minecraft:glint": {
+            "value": 1
+        },
+        "minecraft:max_stack_size": {
+            "value": 64
+        },
+        "minecraft:tags": {
+            "tags": [
+                "minecraft:is_meat",
+                "minecraft:is_food"
+            ]
+        },
+        "minecraft:use_animation": {
+            "value": "eat"
+        },
+        "minecraft:use_modifiers": {
+            "movement_modifier": 0.32,
+            "use_duration": 1.6
+        }
+    },
+    "id": 257,
+    "name": "test:another_food"
+}

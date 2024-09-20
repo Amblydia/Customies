@@ -6,13 +6,19 @@ namespace customiesdevs\customies\item\component;
 final class EntityPlacerComponent implements ItemComponent {
 
 	private string $entity;
-	private array $dispense_on;
-    private array $use_on;
+	private array $dispenseOn;
+    private array $useOn;
 
-	public function __construct(string $entity, array $dispense_on, array $use_on) {
+	/**
+	 * Allows an item to place entities into the world.
+	 * @param string $entity
+	 * @param array $dispenseOn
+	 * @param array $useOn
+	 */
+	public function __construct(string $entity, array $dispenseOn, array $useOn) {
 		$this->entity = $entity;
-        $this->dispense_on = $dispense_on;
-        $this->use_on = $use_on;
+        $this->dispenseOn = $dispenseOn;
+        $this->useOn = $useOn;
 	}
 
 	public function getName(): string {
@@ -22,8 +28,8 @@ final class EntityPlacerComponent implements ItemComponent {
 	public function getValue(): array {
 		return [
 			"entity" => $this->entity,
-			"dispense_on" => $this->dispense_on,
-            "use_on" => $this->use_on
+			"dispense_on" => $this->dispenseOn,
+            "use_on" => $this->useOn
 		];
 	}
 

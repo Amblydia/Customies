@@ -8,16 +8,19 @@ final class FoodComponent implements ItemComponent {
 	public const CHORUS_COOLDOWN = "chorusfruit";
 
 	private bool $canAlwaysEat;
-	private int $cooldownTime;
-	private string $cooldownType;
 	private int $nutrition;
 	private float $saturationModifier;
 	private string $usingConvertsTo;
 
-	public function __construct(bool $canAlwaysEat = false, int $cooldownTime = 0, string $cooldownType = "", int $nutrition = 0, float $saturationModifier = 0.6, string $usingConvertsTo = "") {
+	/**
+	 * Sets the item as a food component, allowing it to be edible to the player.
+	 * @param bool $canAlwaysEat
+	 * @param int $nutrition
+	 * @param float $saturationModifier
+	 * @param string $usingConvertsTo
+	 */
+	public function __construct(bool $canAlwaysEat = false, int $nutrition = 0, float $saturationModifier = 0.6, string $usingConvertsTo = "") {
 		$this->canAlwaysEat = $canAlwaysEat;
-		$this->cooldownTime = $cooldownTime;
-		$this->cooldownType = $cooldownType;
 		$this->nutrition = $nutrition;
 		$this->saturationModifier = $saturationModifier;
 		$this->usingConvertsTo = $usingConvertsTo;
@@ -30,11 +33,11 @@ final class FoodComponent implements ItemComponent {
 	public function getValue(): array {
 		return [
 			"can_always_eat" => $this->canAlwaysEat,
-			"cooldown_time" => $this->cooldownTime,
-			"cooldown_type" => $this->cooldownType,
 			"nutrition" => $this->nutrition,
 			"saturation_modifier" => $this->saturationModifier,
-			"using_converts_to" => $this->usingConvertsTo
+			"using_converts_to" => [
+				"name" => $this->usingConvertsTo
+			]
 		];
 	}
 

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\property;
+namespace customiesdevs\customies\item\component\properties;
 
 use customiesdevs\customies\item\component\ItemComponent;
 
-final class EnchantableSlotComponent implements ItemComponent {
+final class EnchantableSlotProperty implements ItemComponent {
 
 	public const SLOT_ALL = "all";
 	public const SLOT_BOOTS = "armor_feet";
@@ -28,6 +28,10 @@ final class EnchantableSlotComponent implements ItemComponent {
 
 	private string $slot;
 
+	/**
+	 * What enchantments can be applied (ex. Using bow would allow this item to be enchanted as if it were a bow).
+	 * @param string $slot
+	 */
 	public function __construct(string $slot = self::SLOT_ALL) {
 		$this->slot = $slot;
 	}

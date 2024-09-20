@@ -9,6 +9,12 @@ final class RecordComponent implements ItemComponent {
 	private float $duration;
     private string $soundEvent;
 
+	/**
+	 * Record Component used by record items to play music.
+	 * @param int $comparatorSignal
+	 * @param float $duration
+	 * @param string $soundEvent
+	 */
 	public function __construct(int $comparatorSignal = 1, float $duration, string $soundEvent = "undefined") {
 		$this->comparatorSignal = $comparatorSignal;
 		$this->duration = $duration;

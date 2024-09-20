@@ -8,6 +8,11 @@ final class UseModifiersComponent implements ItemComponent {
 	private float $useDuration;
 	private float $movementModifier;
 
+	/**
+	 * Determines how long an item takes to use in combination with components such as Shooter, Throwable, or Food.
+	 * @param float $useDuration
+	 * @param float $movementModifier
+	 */
 	public function __construct(float $useDuration, float $movementModifier) {
 		$this->useDuration = $useDuration;
 		$this->movementModifier = $movementModifier;

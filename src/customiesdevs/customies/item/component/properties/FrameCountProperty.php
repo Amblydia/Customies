@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\property;
+namespace customiesdevs\customies\item\component\properties;
 
 use customiesdevs\customies\item\component\ItemComponent;
 
-final class FrameCountComponent implements ItemComponent {
+final class FrameCountProperty implements ItemComponent {
 
-	private int $amount;
+	private int $value;
 
-	public function __construct(int $amount = 1) {
-		$this->amount = $amount;
+	public function __construct(int $value = 1) {
+		$this->value = $value;
 	}
 
 	public function getName(): string {
@@ -18,7 +18,7 @@ final class FrameCountComponent implements ItemComponent {
 	}
 
 	public function getValue(): int {
-		return $this->amount;
+		return $this->value;
 	}
 
 	public function isProperty(): bool {

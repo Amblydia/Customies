@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\property;
+namespace customiesdevs\customies\item\component\properties;
 
 use customiesdevs\customies\item\component\ItemComponent;
 
-final class UseAnimationComponent implements ItemComponent {
+final class UseAnimationProperty implements ItemComponent {
 
 	public const ANIMATION_EAT = "eat";
 	public const ANIMATION_DRINK = "drink";
@@ -18,10 +18,14 @@ final class UseAnimationComponent implements ItemComponent {
 	public const ANIMATION_SPEAR = "spear";
 	public const ANIMATION_SPYGLASS = "spyglass";
 
-	private string $animation;
+	private string $value;
 
-	public function __construct(string $animation = self::ANIMATION_NONE) {
-		$this->animation = $animation;
+	/**
+	 * Determines which animation plays when using an item.
+	 * @param string $value
+	 */
+	public function __construct(string $value = self::ANIMATION_NONE) {
+		$this->value = $value;
 	}
 
 	public function getName(): string {
@@ -29,7 +33,7 @@ final class UseAnimationComponent implements ItemComponent {
 	}
 
 	public function getValue(): string {
-		return $this->animation;
+		return $this->value;
 	}
 
 	public function isProperty(): bool {

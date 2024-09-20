@@ -13,6 +13,10 @@ final class DiggerComponent implements ItemComponent {
 	private array $destroySpeeds;
 	private bool $useEfficiency;
 
+	/**
+	 * Allows a creator to determine how quickly an item can dig specific blocks.
+	 * @param bool $useEfficiency
+	 */
 	public function __construct(bool $useEfficiency) {
 		$this->useEfficiency = $useEfficiency;
 	}

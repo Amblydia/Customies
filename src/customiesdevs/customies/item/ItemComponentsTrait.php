@@ -10,15 +10,13 @@ use customiesdevs\customies\item\component\FoodComponent;
 use customiesdevs\customies\item\component\FuelComponent;
 use customiesdevs\customies\item\component\ItemComponent;
 use customiesdevs\customies\item\component\ProjectileComponent;
+use customiesdevs\customies\item\component\properties\CanDestroyInCreativeProperty;
+use customiesdevs\customies\item\component\properties\CreativeCategoryProperty;
+use customiesdevs\customies\item\component\properties\CreativeGroupProperty;
+use customiesdevs\customies\item\component\properties\IconProperty;
+use customiesdevs\customies\item\component\properties\MaxStackSizeProperty;
+use customiesdevs\customies\item\component\properties\UseAnimationProperty;
 use customiesdevs\customies\item\component\TagsComponent;
-use customiesdevs\customies\item\component\property\CanDestroyInCreativeComponent;
-use customiesdevs\customies\item\component\property\CreativeCategoryComponent;
-use customiesdevs\customies\item\component\property\CreativeGroupComponent;
-use customiesdevs\customies\item\component\property\DamageComponent;
-use customiesdevs\customies\item\component\property\HandEquippedComponent;
-use customiesdevs\customies\item\component\property\IconComponent;
-use customiesdevs\customies\item\component\property\MaxStackSizeComponent;
-use customiesdevs\customies\item\component\property\UseAnimationComponent;
 use customiesdevs\customies\item\component\ThrowableComponent;
 use customiesdevs\customies\item\component\UseModifiersComponent;
 use customiesdevs\customies\item\component\WearableComponent;
@@ -68,12 +66,12 @@ trait ItemComponentsTrait {
 	 */
 	protected function initComponent(string $texture, ?CreativeInventoryInfo $creativeInfo = null): void {
 		$creativeInfo ??= CreativeInventoryInfo::DEFAULT();
-		$this->addComponent(new CreativeCategoryComponent($creativeInfo));
-		$this->addComponent(new CreativeGroupComponent($creativeInfo));
-		$this->addComponent(new CanDestroyInCreativeComponent());
-		$this->addComponent(new IconComponent($texture));
-		$this->addComponent(new MaxStackSizeComponent($this->getMaxStackSize()));
-
+		$this->addComponent(new CreativeCategoryProperty($creativeInfo));
+		$this->addComponent(new CreativeGroupProperty($creativeInfo));
+		$this->addComponent(new CanDestroyInCreativeProperty());
+		$this->addComponent(new IconProperty($texture));
+		$this->addComponent(new MaxStackSizeProperty($this->getMaxStackSize()));
+		
 		if($this instanceof Armor) {
 			$slot = match ($this->getArmorSlot()) {
 				ArmorInventory::SLOT_HEAD => WearableComponent::SLOT_ARMOR_HEAD,
@@ -89,7 +87,7 @@ trait ItemComponentsTrait {
 			if($this instanceof Food) {
 				$this->addComponent(new FoodComponent(!$this->requiresHunger()));
 			}
-			$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_EAT));
+			$this->addComponent(new UseAnimationProperty(UseAnimationProperty::ANIMATION_EAT));
 			$this->addComponent(new UseModifiersComponent(1.6, 0.35));
 			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_FOOD]));
 		}

@@ -16,6 +16,11 @@ final class WearableComponent implements ItemComponent {
 	private string $slot;
 	private int $protection;
 
+	/**
+	 * Sets the wearable item component.
+	 * @param string $slot
+	 * @param int $protection
+	 */
 	public function __construct(string $slot, int $protection = 0) {
 		$this->slot = $slot;
 		$this->protection = $protection;
