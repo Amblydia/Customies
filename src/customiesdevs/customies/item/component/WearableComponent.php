@@ -10,7 +10,6 @@ final class WearableComponent implements ItemComponent {
 	public const SLOT_ARMOR_FEET = "slot.armor.feet";
 	public const SLOT_ARMOR_HEAD = "slot.armor.head";
 	public const SLOT_ARMOR_LEGS = "slot.armor.legs";
-	public const SLOT_WEAPON_MAIN_HAND = "slot.weapon.mainhand";
 	public const SLOT_WEAPON_OFF_HAND = "slot.weapon.offhand";
 
 	private string $slot;
