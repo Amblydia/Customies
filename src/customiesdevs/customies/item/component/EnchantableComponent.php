@@ -31,6 +31,14 @@ final class EnchantableComponent implements ItemComponent {
         ];
 	}
 
+	public function getEnchantableSlot() : string {
+		return $this->slot;
+	}
+
+	public function getEnchantableValue() : int {
+		return $this->value;
+	}
+
 	public function isProperty(): bool {
 		return false;
 	}

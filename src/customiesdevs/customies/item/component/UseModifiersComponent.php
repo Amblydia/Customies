@@ -13,7 +13,7 @@ final class UseModifiersComponent implements ItemComponent {
 	 * @param float $useDuration
 	 * @param float $movementModifier
 	 */
-	public function __construct(float $useDuration, float $movementModifier) {
+	public function __construct(float $movementModifier, float $useDuration = 0) {
 		$this->useDuration = $useDuration;
 		$this->movementModifier = $movementModifier;
 	}
@@ -27,6 +27,10 @@ final class UseModifiersComponent implements ItemComponent {
 			"movement_modifier" => $this->movementModifier,
 			"use_duration" => $this->useDuration
 		];
+	}
+
+	public function getUseDuration(): float {
+		return $this->useDuration;
 	}
 
 	public function isProperty(): bool {
