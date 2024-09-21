@@ -9,7 +9,7 @@ final class FuelComponent implements ItemComponent {
 
 	/**
 	 * Allows this item to be used as fuel in a furnace to 'cook' other items.
-	 * @param float $duration
+	 * @param float $duration Amount of time, in seconds, this fuel will cook items
 	 */
 	public function __construct(float $duration = 0.05) {
 		$this->duration = $duration;

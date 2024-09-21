@@ -13,7 +13,7 @@ final class TagsComponent implements ItemComponent {
 
 	/**
 	 * Determines which tags are included on a given item.
-	 * @param array $tags
+	 * @param array $tags An array that can contain multiple item tags
 	 */
 	public function __construct(array $tags) {
 		$this->tags = $tags;

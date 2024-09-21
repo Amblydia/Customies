@@ -5,7 +5,6 @@ namespace customiesdevs\customies\item\component;
 
 final class WearableComponent implements ItemComponent {
 
-	public const SLOT_ARMOR = "slot.armor";
 	public const SLOT_ARMOR_CHEST = "slot.armor.chest";
 	public const SLOT_ARMOR_FEET = "slot.armor.feet";
 	public const SLOT_ARMOR_HEAD = "slot.armor.head";
@@ -17,8 +16,8 @@ final class WearableComponent implements ItemComponent {
 
 	/**
 	 * Sets the wearable item component.
-	 * @param string $slot
-	 * @param int $protection
+	 * @param string $slot Specifies where the item can be worn
+	 * @param int $protection How much protection the wearable item provides
 	 */
 	public function __construct(string $slot, int $protection = 0) {
 		$this->slot = $slot;

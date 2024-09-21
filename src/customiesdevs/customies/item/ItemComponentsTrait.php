@@ -58,7 +58,6 @@ trait ItemComponentsTrait {
 			$components->setTag("item_properties", $properties);
 			$components->setTag($component->getName(), $tag);
 		}
-		var_dump(CompoundTag::create()->setTag("components", $components)->toString());
 		return CompoundTag::create()
 			->setTag("components", $components);
 	}
@@ -79,8 +78,7 @@ trait ItemComponentsTrait {
 				ArmorInventory::SLOT_HEAD => WearableComponent::SLOT_ARMOR_HEAD,
 				ArmorInventory::SLOT_CHEST => WearableComponent::SLOT_ARMOR_CHEST,
 				ArmorInventory::SLOT_LEGS => WearableComponent::SLOT_ARMOR_LEGS,
-				ArmorInventory::SLOT_FEET => WearableComponent::SLOT_ARMOR_FEET,
-				default => WearableComponent::SLOT_ARMOR
+				ArmorInventory::SLOT_FEET => WearableComponent::SLOT_ARMOR_FEET
 			};
 			$this->addComponent(new WearableComponent($slot, $this->getDefensePoints()));
 		}
@@ -90,7 +88,7 @@ trait ItemComponentsTrait {
 				$this->addComponent(new FoodComponent(!$this->requiresHunger()));
 			}
 			$this->addComponent(new UseAnimationProperty(UseAnimationProperty::ANIMATION_EAT));
-			$this->addComponent(new UseModifiersComponent(1.6, 0.35));
+			$this->addComponent(new UseModifiersComponent(0.35, 1.6));
 			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_FOOD]));
 		}
 

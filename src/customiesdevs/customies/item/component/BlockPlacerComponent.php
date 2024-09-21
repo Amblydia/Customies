@@ -8,15 +8,15 @@ use pocketmine\world\format\io\GlobalBlockStateHandlers;
 
 final class BlockPlacerComponent implements ItemComponent {
 
-	private string $blockIdentifier;
+	private Block $block;
 	private array $useOn;
 
 	/**
 	 * Sets the item as a Planter item component for blocks. Items with this component will place a block when used.
-	 * @param string $blockIdentifier
+	 * @param Block $block
 	 */
-	public function __construct(string $blockIdentifier) {
-		$this->blockIdentifier = $blockIdentifier;
+	public function __construct(Block $block) {
+		$this->block = $block;
 	}
 
 	public function getName(): string {
@@ -25,7 +25,7 @@ final class BlockPlacerComponent implements ItemComponent {
 
 	public function getValue(): array {
 		return [
-			"block" => $this->blockIdentifier,
+			"block" => GlobalBlockStateHandlers::getSerializer()->serialize($this->block->getStateId())->getName(),
 			"use_on" => $this->useOn
 		];
 	}

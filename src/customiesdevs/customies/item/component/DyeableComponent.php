@@ -3,16 +3,18 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item\component;
 
+use InvalidArgumentException;
+
 final class DyeableComponent implements ItemComponent {
 
-	private array $hexCode;
+	private string $hex;
 
 	/**
 	 * Enables custom items to be dyed in cauldrons.
-	 * @param array $hexCode
+	 * @param string $hex The hex color code (e.g "#47ff5a")
 	 */
-	public function __construct(array $hexCode) { // convert this #47ff5a to int [71, 255, 90]
-		$this->hexCode = $hexCode;
+	public function __construct(string $hex) {
+		$this->hex = $hex;
 	}
 
 	public function getName(): string {
@@ -21,7 +23,7 @@ final class DyeableComponent implements ItemComponent {
 
 	public function getValue(): array {
 		return [
-            "default_color" => [$this->hexCode]
+            "default_color" => $this->hex
         ];
 	}
 

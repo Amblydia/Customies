@@ -11,9 +11,9 @@ final class EntityPlacerComponent implements ItemComponent {
 
 	/**
 	 * Allows an item to place entities into the world.
-	 * @param string $entity
-	 * @param array $dispenseOn
-	 * @param array $useOn
+	 * @param string $entity The entity to be placed in the world
+	 * @param array $dispenseOn List of block descriptors of the blocks that this item can be dispensed on. If left empty, all blocks will be allowed
+	 * @param array $useOn List of block descriptors of the blocks that this item can be used on. If left empty, all blocks will be allowed
 	 */
 	public function __construct(string $entity, array $dispenseOn, array $useOn) {
 		$this->entity = $entity;
