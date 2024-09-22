@@ -66,6 +66,6 @@ final class ItemTagsProperty implements ItemComponent {
 	}
 
 	public function isProperty(): bool {
-		return true;
+		return false;
 	}
 }
