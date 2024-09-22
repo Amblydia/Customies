@@ -11,9 +11,13 @@ final class AllowOffHandProperty implements ItemComponent {
 
 	/**
 	 * Determine whether an item can be placed in the off-hand slot of the inventory.
-	 * @param bool $value
+	 * @param bool $value Default is set to `true`
+	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
 	public function __construct(bool $value = true) {
+		if(!is_bool($value)){
+            throw new \InvalidArgumentException("A boolean value (true or false) must be specified for 'value'");
+        }
 		$this->value = $value;
 	}
 

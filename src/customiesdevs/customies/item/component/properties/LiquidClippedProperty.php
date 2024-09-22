@@ -11,9 +11,13 @@ final class LiquidClippedProperty implements ItemComponent {
 
 	/**
 	 * Determines whether an item interacts with liquid blocks on use.
-	 * @param bool $value
+	 * @param bool $value If the item interacts with liquid blocks on use
+	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
-	public function __construct(bool $value) {
+	public function __construct(bool $value = true) {
+		if(!is_bool($value)){
+            throw new \InvalidArgumentException("A boolean value (true or false) must be specified for 'value'");
+        }
 		$this->value = $value;
 	}
 

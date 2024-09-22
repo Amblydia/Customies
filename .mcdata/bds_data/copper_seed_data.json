@@ -45,9 +45,6 @@
                 }
             ]
         },
-        "minecraft:liquid_clipped": {
-            "value": 1
-        },
         "minecraft:publisher_on_use_on": {
             "autoSucceedOnClient": 0
         }

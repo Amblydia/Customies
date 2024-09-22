@@ -11,9 +11,9 @@ final class UseDurationProperty implements ItemComponent {
 
 	/**
 	 * How long the item takes to use in seconds.
-	 * @param int $value
+	 * @param int $value seconds (`1.6` means `32` seconds)
 	 */
-	public function __construct(int $value) {
+	public function __construct(int $value = 32) {
 		$this->value = $value;
 	}
 

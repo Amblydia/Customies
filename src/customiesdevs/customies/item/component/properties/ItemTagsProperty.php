@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component;
+namespace customiesdevs\customies\item\component\properties;
 
-final class TagsComponent implements ItemComponent {
+use customiesdevs\customies\item\component\ItemComponent;
+
+final class ItemTagsProperty implements ItemComponent {
 
 	# Tools
 	public const TAG_IS_SWORD = "minecraft:is_sword";
@@ -47,7 +49,7 @@ final class TagsComponent implements ItemComponent {
 	private array $tags;
 
 	/**
-	 * Determines which tags are included on a given item.
+	 * Determines which items tags are included on a given item.
 	 * @param array $tags An array that can contain multiple item tags
 	 * @link [ItemTags](https://wiki.bedrock.dev/items/item-tags.html)
 	 */
@@ -56,16 +58,14 @@ final class TagsComponent implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "minecraft:tags";
+		return "item_tags";
 	}
 
 	public function getValue(): array {
-		return [
-            "tags" => $this->tags
-        ];
+		return $this->tags;
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

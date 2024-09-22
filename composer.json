@@ -1,17 +1,35 @@
 {
 	"name": "customiesdevs/customies",
+	"description": "Creates Custom Items & Block in Pocketmine-MP (Fork)",
+	"version": "1.4.0",
 	"type": "library",
-	"minimum-stability": "beta",
-	"prefer-stable": true,
+	"license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+	"require-dev": {
+        "sof3/pharynx": "^0.3.0"
+    },
 	"autoload": {
 		"classmap": ["src"]
 	},
 	"scripts": {
-		"build": "php -dphar.readonly=0 vendor/bin/pharynx -i=. -c -p=Timer.phar"
+		"build-phar": [
+            "@composer install --no-dev --classmap-authoritative --ignore-platform-reqs",
+            "php -dphar.readonly=0 vendor/bin/pharynx -i=. -c -p=Customies.phar"
+        ]
 	},
 	"config": {
+		"sort-packages": true,
 		"allow-plugins": {
 			"phpstan/extension-installer": true
 		}
-	}
+	},
+	"authors": [
+        {
+            "name": "JeanTKG",
+            "email": "jeantkg@gmail.com",
+            "role": "Fork-Developer",
+			"homepage": "https://discord.gg/H7suUH6RD5"
+        }
+    ]
 }

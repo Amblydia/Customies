@@ -25,6 +25,14 @@ class MaterialInstancesComponent implements BlockComponent {
 	private bool $ambientOcclusion;
 	private bool $faceDimming;
 
+	/**
+	 * The material instances for a block. Maps face or material_instance names in a geometry file to an actual material instance. You can assign a material instance object to any of these faces: "up", "down", "north", "south", "east", "west", or "*"
+	 * @param string $target material_instance names
+	 * @param string $texture Texture name for the material.
+	 * @param string $renderMethod The render method to use
+	 * @param bool $ambientOcclusion Should this material have ambient occlusion applied when lighting? If true, shadows will be created around and underneath the block.
+	 * @param bool $faceDimming Should this material be dimmed by the direction it's facing?
+	 */
 	public function __construct(
 		string $target, 
 		string $texture, 

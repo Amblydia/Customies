@@ -13,15 +13,20 @@ use customiesdevs\customies\item\component\ProjectileComponent;
 use customiesdevs\customies\item\component\properties\CanDestroyInCreativeProperty;
 use customiesdevs\customies\item\component\properties\CreativeCategoryProperty;
 use customiesdevs\customies\item\component\properties\CreativeGroupProperty;
+use customiesdevs\customies\item\component\properties\FrameCountProperty;
 use customiesdevs\customies\item\component\properties\IconProperty;
+use customiesdevs\customies\item\component\properties\ItemTagsProperty;
+use customiesdevs\customies\item\component\properties\MiningSpeedProperty;
 use customiesdevs\customies\item\component\properties\MaxStackSizeProperty;
 use customiesdevs\customies\item\component\properties\UseAnimationProperty;
 use customiesdevs\customies\item\component\TagsComponent;
 use customiesdevs\customies\item\component\ThrowableComponent;
 use customiesdevs\customies\item\component\UseModifiersComponent;
+use customiesdevs\customies\item\component\UseAnimationComponent;
 use customiesdevs\customies\item\component\WearableComponent;
 use customiesdevs\customies\util\NBT;
 use pocketmine\entity\Consumable;
+use pocketmine\entity\FoodSource;
 use pocketmine\inventory\ArmorInventory;
 use pocketmine\item\Armor;
 use pocketmine\item\Durable;
@@ -72,7 +77,8 @@ trait ItemComponentsTrait {
 		$this->addComponent(new CanDestroyInCreativeProperty());
 		$this->addComponent(new IconProperty($texture));
 		$this->addComponent(new MaxStackSizeProperty($this->getMaxStackSize()));
-		
+		$this->addComponent(new FrameCountProperty());
+		$this->addComponent(new MiningSpeedProperty());
 		if($this instanceof Armor) {
 			$slot = match ($this->getArmorSlot()) {
 				ArmorInventory::SLOT_HEAD => WearableComponent::SLOT_ARMOR_HEAD,
@@ -81,31 +87,29 @@ trait ItemComponentsTrait {
 				ArmorInventory::SLOT_FEET => WearableComponent::SLOT_ARMOR_FEET
 			};
 			$this->addComponent(new WearableComponent($slot, $this->getDefensePoints()));
+			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_ARMOR]));
+			$this->addComponent(new ItemTagsProperty([ItemTagsProperty::TAG_IS_ARMOR]));
 		}
-
 		if($this instanceof Consumable) {
-			if($this instanceof Food) {
+			if($this instanceof Food || $this instanceof FoodSource) {
 				$this->addComponent(new FoodComponent(!$this->requiresHunger()));
 			}
 			$this->addComponent(new UseAnimationProperty(UseAnimationProperty::ANIMATION_EAT));
+			$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_EAT));
 			$this->addComponent(new UseModifiersComponent(0.35, 1.6));
 			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_FOOD]));
+			$this->addComponent(new ItemTagsProperty([ItemTagsProperty::TAG_IS_FOOD]));
 		}
-
-		// remove these in favor of customitem classes? since it would do the same as it
 		if($this instanceof Durable) {
 			$this->addComponent(new DurabilityComponent($this->getMaxDurability()));
 		}
-
 		if($this instanceof ProjectileItem) {
 			$this->addComponent(new ProjectileComponent(1.25, "projectile"));
 			$this->addComponent(new ThrowableComponent(true));
 		}
-
 		if($this->getName() !== "Unknown") {
 			$this->addComponent(new DisplayNameComponent($this->getName()));
 		}
-
 		if($this->getFuelTime() > 0) {
 			$this->addComponent(new FuelComponent($this->getFuelTime()));
 		}

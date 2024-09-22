@@ -7,6 +7,12 @@ final class BlockPlacerExtraComponent implements ItemComponent {
 
     private bool $data;
 
+    /**
+	 * Mojang's Unknown Component.
+     * Its a part of `minecraft:block_placer`
+	 * @param bool $value Default is set to `true` **(Vanilla)**
+	 * @todo Figure out what it does
+	 */
     public function __construct(bool $data = true) {
         $this->data = $data;
     }
@@ -16,7 +22,9 @@ final class BlockPlacerExtraComponent implements ItemComponent {
     }
 
     public function getValue(): array {
-        return ["autoSucceedOnClient" => $this->data ? 0 : 1];
+        return [
+            "autoSucceedOnClient" => $this->data ? 0 : 1
+        ];
     }
 
     public function isProperty(): bool {

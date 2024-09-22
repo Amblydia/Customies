@@ -1,3 +1,4 @@
+[
     {
         "Name": "test:test_wood",
         "Properties": {
@@ -22,25 +23,37 @@
                     "grid_size": 3,
                     "table_name": "Test Table"
                 },
+                "minecraft:custom_components": {
+                    "dummyComponent": "ClientDummyCustomComponent"
+                },
                 "minecraft:destructible_by_mining": {
-                    "value": 0.4
+                    "value": 1.5
                 },
                 "minecraft:display_name": {
                     "value": "tile.test:test_wood"
                 },
                 "minecraft:friction": {
-                    "value": 0.09
+                    "value": 0.9
                 },
                 "minecraft:geometry": {
-                    "bone_visibility": {},
+                    "bone_visibility": {
+                        "test": {
+                            "expression": "1.000000",
+                            "version": 0
+                        },
+                        "test2": {
+                            "expression": "0.000000",
+                            "version": 0
+                        }
+                    },
                     "culling": "",
                     "identifier": "geometry.test_wood"
                 },
                 "minecraft:light_dampening": {
-                    "lightLevel": 0
+                    "lightLevel": 12
                 },
                 "minecraft:light_emission": {
-                    "emission": 4
+                    "emission": 12
                 },
                 "minecraft:material_instances": {
                     "mappings": {},
@@ -160,3 +173,4 @@
             }
         }
     }
+]

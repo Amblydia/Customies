@@ -10,11 +10,15 @@ final class StackedByDataProperty implements ItemComponent {
 	private bool $value;
 
 	/**
-	 * determines if the same item with different aux values can stack. 
+	 * Determines if the same item with different aux values can stack. 
 	 * Additionally, this component defines whether the item actors can merge while floating in the world.
-	 * @param bool $value
+	 * @param bool $value Should item stack, Default is set to `true`
+	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
 	public function __construct(bool $value = true) {
+		if(!is_bool($value)){
+            throw new \InvalidArgumentException("A boolean value (true or false) must be specified for 'value'");
+        }
 		$this->value = $value;
 	}
 

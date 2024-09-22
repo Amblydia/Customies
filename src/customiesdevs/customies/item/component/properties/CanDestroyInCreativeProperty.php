@@ -11,9 +11,13 @@ final class CanDestroyInCreativeProperty implements ItemComponent {
 
 	/**
 	 * Determines if the item will break blocks in Creative Mode while swinging.
-	 * @param bool $value
+	 * @param bool $value Default is set to `true`
+	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
 	public function __construct(bool $value = true) {
+		if(!is_bool($value)){
+            throw new \InvalidArgumentException("A boolean value (true or false) must be specified for 'value'");
+        }
 		$this->value = $value;
 	}
 

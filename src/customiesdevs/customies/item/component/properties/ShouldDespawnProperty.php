@@ -11,9 +11,13 @@ final class ShouldDespawnProperty implements ItemComponent {
 
 	/**
 	 * Determines if an item should despawn while floating in the world.
-	 * @param bool $value
+	 * @param bool $value item should eventually despawn while floating in the world, Default is set to `true`
+	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
 	public function __construct(bool $value = true) {
+		if(!is_bool($value)){
+            throw new \InvalidArgumentException("A boolean value (true or false) must be specified for 'value'");
+        }
 		$this->value = $value;
 	}
 

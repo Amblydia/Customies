@@ -30,13 +30,6 @@ final class CustomiesSoundFactory{
     }
 
     public function playSoundFor(Player $player, string $soundName, Vector3 $pos){
-        $player->getNetworkSession()->sendDataPacket(PlaySoundPacket::create(
-			$soundName,
-			$pos->getX(),
-			$pos->getY(),
-			$pos->getZ(),
-			1.0,
-			1.0
-		), true);
+        $player->getNetworkSession()->sendDataPacket(PlaySoundPacket::create($soundName, $pos->getX(), $pos->getY(), $pos->getZ(), 1.0, 1.0), true);
     }
 }

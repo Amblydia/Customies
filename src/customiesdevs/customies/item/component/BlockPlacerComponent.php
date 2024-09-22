@@ -9,7 +9,7 @@ use pocketmine\world\format\io\GlobalBlockStateHandlers;
 final class BlockPlacerComponent implements ItemComponent {
 
 	private Block $block;
-	private array $useOn;
+	private array $useOn = [];
 
 	/**
 	 * Sets the item as a Planter item component for blocks. Items with this component will place a block when used.
@@ -30,18 +30,20 @@ final class BlockPlacerComponent implements ItemComponent {
 		];
 	}
 
-	public function useOn(Block ...$blocks): BlockPlacerComponent {
+	public function isProperty(): bool {
+		return false;
+	}
+
+	/**
+     * Add blocks to the `use_on` array in the required format.
+     * @param Block ...$blocks
+     */
+	public function useOn(Block ...$blocks): self{
 		foreach($blocks as $block){
 			$this->useOn[] = [
-				"name" => GlobalBlockStateHandlers::getSerializer()->serialize($block->getStateId())->getName(),
-				"states" => [],
-				"tags" => ""
+				"name" => GlobalBlockStateHandlers::getSerializer()->serialize($block->getStateId())->getName()
 			];
 		}
 		return $this;
-	}
-
-	public function isProperty(): bool {
-		return false;
 	}
 }

@@ -13,9 +13,9 @@ final class IconProperty implements ItemComponent {
 
 	/**
 	 * Determines the icon to represent the item in the UI and elsewhere.
-	 * @param string $default_texture
-	 * @param string $dyed_texture
-	 * @param string $trim_texture
+	 * @param string $default_texture the texture name should same as the `resource_pack/textures/item_texture.json` `texture_data`
+	 * @param string $dyed_texture Default is set to `None`
+	 * @param string $trim_texture Default is set to `None`
 	 */
 	public function __construct(string $default_texture, string $dyed_texture = "", string $trim_texture = "") {
 		$this->default_texture = $default_texture;

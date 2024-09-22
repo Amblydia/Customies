@@ -15,6 +15,14 @@ class TransformationComponent implements BlockComponent {
 	private Vector3 $rotation;
 	private Vector3 $rotationPivot;
 
+	/**
+	 * The block's translation, rotation and scale with respect to the center of its world position
+	 * @param Vector3 $translation The block's translation
+	 * @param Vector3 $scale The block's scale
+	 * @param Vector3 $scalePivot The point to apply scale around
+	 * @param Vector3 $rotation The block's rotation in increments of 90 degrees
+	 * @param Vector3 $rotationPivot The point to apply rotation around
+	 */
 	public function __construct(
 		Vector3 $translation = new Vector3(0, 0, 0), 
 		Vector3 $scale = new Vector3(1, 1, 1), 
