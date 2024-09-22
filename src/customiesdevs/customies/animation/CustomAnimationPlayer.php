@@ -9,23 +9,23 @@ use pocketmine\network\mcpe\protocol\AnimateEntityPacket;
 
 class CustomAnimationPlayer implements Animation{
 
-    private string $animationName;
-    private Player $player;
+	private string $animationName;
+	private Player $player;
 
-    public function __construct(string $animationName, Player $player){
-        $this->animationName = $animationName;
-        $this->player = $player;
-    } 
+	public function __construct(string $animationName, Player $player){
+		$this->animationName = $animationName;
+		$this->player = $player;
+	} 
 
-    public function encode() : array{
-        return [AnimateEntityPacket::create(
-            $this->animationName,
-            "",
-            "",
-            0,
-            "",
-            0.0,
-            [$this->player->getId()]
-        )];
-    }
+	public function encode() : array{
+		return [AnimateEntityPacket::create(
+			$this->animationName,
+			"",
+			"",
+			0,
+			"",
+			0.0,
+			[$this->player->getId()]
+		)];
+	}
 }

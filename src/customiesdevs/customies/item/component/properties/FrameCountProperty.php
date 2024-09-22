@@ -11,7 +11,7 @@ final class FrameCountProperty implements ItemComponent {
 
 	/**
 	 * Mojang's Unknown Property.
-	 * @param bool $value Default is set to `1` **(Vanilla)**
+	 * @param int $value Default is set to `1` **(Vanilla)**
 	 * @todo Figure out what it does
 	 */
 	public function __construct(int $value = 1) {

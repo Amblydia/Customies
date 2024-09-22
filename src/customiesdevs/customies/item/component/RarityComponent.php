@@ -5,10 +5,10 @@ namespace customiesdevs\customies\item\component;
 
 final class RarityComponent implements ItemComponent {
 
-    public const RARITY_COMMON = "common";
-    public const RARITY_UNCOMMON = "uncommon";
-    public const RARITY_RARE = "rare";
-    public const RARITY_EPIC = "epic";
+	public const RARITY_COMMON = "common";
+	public const RARITY_UNCOMMON = "uncommon";
+	public const RARITY_RARE = "rare";
+	public const RARITY_EPIC = "epic";
 
 	private string $type;
 

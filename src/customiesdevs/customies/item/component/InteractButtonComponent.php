@@ -26,7 +26,7 @@ final class InteractButtonComponent implements ItemComponent {
 	public function getValue(): array {
 		return [
 			"interact_text" => (string) $this->interactButton,
-            "requires_interact" => 1
+			"requires_interact" => 1
 		];
 	}
 

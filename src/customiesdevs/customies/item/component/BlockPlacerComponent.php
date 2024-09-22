@@ -35,9 +35,9 @@ final class BlockPlacerComponent implements ItemComponent {
 	}
 
 	/**
-     * Add blocks to the `use_on` array in the required format.
-     * @param Block ...$blocks
-     */
+	 * Add blocks to the `use_on` array in the required format.
+	 * @param Block ...$blocks
+	 */
 	public function useOn(Block ...$blocks): self{
 		foreach($blocks as $block){
 			$this->useOn[] = [

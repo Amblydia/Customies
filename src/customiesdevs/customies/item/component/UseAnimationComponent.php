@@ -16,7 +16,7 @@ final class UseAnimationComponent implements ItemComponent {
 	public const ANIMATION_SPYGLASS = "spyglass";
 	public const ANIMATION_BRUSH = "brush";
 
-    private string $animation;
+	private string $animation;
 
 	public function __construct(string $animation = self::ANIMATION_EAT) {
 		$this->animation = $animation;

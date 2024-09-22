@@ -10,13 +10,13 @@ use pocketmine\network\mcpe\protocol\types\DimensionIds;
 
 class CustomParticle implements Particle{
 
-    private string $particleName;
+	private string $particleName;
 
-    public function __construct(string $particleName){
-        $this->particleName = $particleName;
-    } 
+	public function __construct(string $particleName){
+		$this->particleName = $particleName;
+	} 
 
-    public function encode(Vector3 $pos): array {
-        return [SpawnParticleEffectPacket::create(DimensionIds::OVERWORLD, -1, $pos, $this->particleName, null)];
-    }
+	public function encode(Vector3 $pos): array {
+		return [SpawnParticleEffectPacket::create(DimensionIds::OVERWORLD, -1, $pos, $this->particleName, null)];
+	}
 }

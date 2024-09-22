@@ -61,8 +61,8 @@ final class TagsComponent implements ItemComponent {
 
 	public function getValue(): array {
 		return [
-            "tags" => $this->tags
-        ];
+			"tags" => $this->tags
+		];
 	}
 
 	public function isProperty(): bool {

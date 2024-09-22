@@ -17,8 +17,8 @@ final class StackedByDataProperty implements ItemComponent {
 	 */
 	public function __construct(bool $value = true) {
 		if(!is_bool($value)){
-            throw new \InvalidArgumentException("A boolean value (true or false) must be specified for 'value'");
-        }
+			throw new \InvalidArgumentException("A boolean value (true or false) must be specified for 'value'");
+		}
 		$this->value = $value;
 	}
 

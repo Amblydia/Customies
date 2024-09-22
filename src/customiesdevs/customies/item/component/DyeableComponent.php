@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item\component;
 
-use InvalidArgumentException;
-
 final class DyeableComponent implements ItemComponent {
 
 	private string $hex;
@@ -23,8 +21,8 @@ final class DyeableComponent implements ItemComponent {
 
 	public function getValue(): array {
 		return [
-            "default_color" => $this->hex
-        ];
+			"default_color" => $this->hex
+		];
 	}
 
 	public function isProperty(): bool {

@@ -8,6 +8,6 @@ use customiesdevs\customies\item\ItemComponentsTrait;
 use pocketmine\item\Bow;
 
 class CustomBow extends Bow implements ItemComponents{
-    use ItemComponentsTrait;
-    // todo
+	use ItemComponentsTrait;
+	// todo
 }

@@ -6,27 +6,27 @@ namespace customiesdevs\customies\item\types;
 use customiesdevs\customies\item\ItemComponents;
 use customiesdevs\customies\item\ItemComponentsTrait;
 use customiesdevs\customies\item\{
-    component\DurabilityComponent
+	component\DurabilityComponent
 };
 use pocketmine\item\Sword;
 use pocketmine\item\Durable;
 
 class CustomSword extends Sword implements ItemComponents{
-    use ItemComponentsTrait;
+	use ItemComponentsTrait;
 
-    public bool $offhand = false;
+	public bool $offhand = false;
 
-    public function setupComponents(){
-        if($this instanceof Durable){
-            $this->addComponent(new DurabilityComponent($this->getMaxDurability()));
-        }
-    }
+	public function setupComponents(){
+		if($this instanceof Durable){
+			$this->addComponent(new DurabilityComponent($this->getMaxDurability()));
+		}
+	}
 
-    public function setOffHand(bool $bool = false){
-        $this->offhand = $bool;
-    }
+	public function setOffHand(bool $bool = false){
+		$this->offhand = $bool;
+	}
 
-    public function getMaxStackSize(): int{
-        return 1;
-    }
+	public function getMaxStackSize(): int{
+		return 1;
+	}
 }

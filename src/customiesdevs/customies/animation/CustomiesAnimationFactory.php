@@ -10,11 +10,11 @@ use customiesdevs\customies\animation\CustomAnimationPlayer;
 
 class CustomiesAnimationFactory{
 
-    public function animatePlayer(Player $player, string $animationName): void{
-        $player->broadcastAnimation(new CustomAnimationPlayer($animationName, $player));
-    }
+	public function animatePlayer(Player $player, string $animationName): void{
+		$player->broadcastAnimation(new CustomAnimationPlayer($animationName, $player));
+	}
 
-    public function animateEntity(Entity $entity, string $animationName): void{
-        $entity->broadcastAnimation(new CustomAnimationEntity($animationName, $entity));
-    }
+	public function animateEntity(Entity $entity, string $animationName): void{
+		$entity->broadcastAnimation(new CustomAnimationEntity($animationName, $entity));
+	}
 }

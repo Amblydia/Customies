@@ -9,7 +9,7 @@ final class RecordComponent implements ItemComponent {
 
 	private int $comparatorSignal;
 	private float $duration;
-    private string $soundEvent;
+	private string $soundEvent;
 
 	/**
 	 * Record Component used by record items to play music.
@@ -24,7 +24,7 @@ final class RecordComponent implements ItemComponent {
 		}
 		$this->comparatorSignal = $comparatorSignal;
 		$this->duration = $duration;
-        $this->soundEvent = $soundEvent;
+		$this->soundEvent = $soundEvent;
 	}
 
 	public function getName(): string {
@@ -35,7 +35,7 @@ final class RecordComponent implements ItemComponent {
 		return [
 			"comparator_signal" => $this->comparatorSignal,
 			"duration" => $this->duration,
-            "sound_event" => $this->soundEvent
+			"sound_event" => $this->soundEvent
 		];
 	}
 

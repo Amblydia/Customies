@@ -11,7 +11,7 @@ final class MiningSpeedProperty implements ItemComponent {
 
 	/**
 	 * Mojang's Unknown Property.
-	 * @param bool $value Default is set to `1` **(Vanilla)**
+	 * @param float $value Default is set to `1` **(Vanilla)**
 	 * @todo Figure out what it does
 	 */
 	public function __construct(float $value = 1) {

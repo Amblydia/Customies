@@ -7,7 +7,7 @@ final class EntityPlacerComponent implements ItemComponent {
 
 	private string $entity;
 	private array $dispenseOn;
-    private array $useOn;
+	private array $useOn;
 
 	/**
 	 * Allows an item to place entities into the world.
@@ -17,8 +17,8 @@ final class EntityPlacerComponent implements ItemComponent {
 	 */
 	public function __construct(string $entity, array $dispenseOn, array $useOn) {
 		$this->entity = $entity;
-        $this->dispenseOn = $dispenseOn;
-        $this->useOn = $useOn;
+		$this->dispenseOn = $dispenseOn;
+		$this->useOn = $useOn;
 	}
 
 	public function getName(): string {
@@ -29,7 +29,7 @@ final class EntityPlacerComponent implements ItemComponent {
 		return [
 			"entity" => $this->entity,
 			"dispense_on" => $this->dispenseOn,
-            "use_on" => $this->useOn
+			"use_on" => $this->useOn
 		];
 	}
 
