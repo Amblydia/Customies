@@ -14,7 +14,11 @@ class CustomParticle implements Particle{
 
 	public function __construct(string $particleName){
 		$this->particleName = $particleName;
-	} 
+	}
+
+	public function getParticleName(): string{
+		return $this->particleName;
+	}
 
 	public function encode(Vector3 $pos): array {
 		return [SpawnParticleEffectPacket::create(DimensionIds::OVERWORLD, -1, $pos, $this->particleName, null)];

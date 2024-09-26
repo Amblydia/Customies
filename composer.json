@@ -4,19 +4,16 @@
 	"version": "1.4.0",
 	"type": "library",
 	"license": "MIT",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-	"require-dev": {
-        "sof3/pharynx": "^0.3.0"
-    },
+	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"autoload": {
 		"classmap": ["src"]
 	},
 	"scripts": {
 		"build-phar": [
-            "@composer install --no-dev --classmap-authoritative --ignore-platform-reqs",
-            "php -dphar.readonly=0 vendor/bin/pharynx -i=. -c -p=Customies.phar"
-        ]
+			"@composer install --no-dev --classmap-authoritative --ignore-platform-reqs",
+			"php -dphar.readonly=0 vendor/bin/pharynx -i=. -c -p=Customies.phar"
+		]
 	},
 	"config": {
 		"sort-packages": true,
@@ -25,11 +22,11 @@
 		}
 	},
 	"authors": [
-        {
-            "name": "JeanTKG",
-            "email": "jeantkg@gmail.com",
-            "role": "Fork-Developer",
+		{
+			"name": "JeanTKG",
+			"email": "jeantkg@gmail.com",
+			"role": "Fork-Developer",
 			"homepage": "https://discord.gg/H7suUH6RD5"
-        }
-    ]
+		}
+	]
 }

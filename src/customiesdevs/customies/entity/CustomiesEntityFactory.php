@@ -35,6 +35,7 @@ class CustomiesEntityFactory {
 	private function updateStaticPacketCache(string $identifier, string $behaviourId): void {
 		$instance = StaticPacketCache::getInstance();
 		$property = (new ReflectionClass($instance))->getProperty("availableActorIdentifiers");
+		$property->setAccessible(true);
 		/** @var AvailableActorIdentifiersPacket $packet */
 		$packet = $property->getValue($instance);
 		/** @var CompoundTag $root */
