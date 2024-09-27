@@ -9,6 +9,9 @@ A PocketMine-MP plugin that implements support for custom blocks, items and enti
 Official Discord community chat for socializing, receiving help with the plugin, and sharing creations. Join in on the
 fun!
 
+## Usage
+Updated Usage Guides are in [Customies Wiki](https://github.com/Amblydia/Customies/wiki)
+
 ## Important Contributors
 
 | Name                                                  | Contribution                                                                                 |
