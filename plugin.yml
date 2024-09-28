@@ -4,9 +4,9 @@ main: customiesdevs\customies\Customies
 version: 1.4.0
 api: 5.18.0
 authors:
-	- DenielWorld
-	- TwistedAsylumMC
+  - DenielWorld
+  - TwistedAsylumMC
 contributors:
-	- JackNoordhuis
-	- Unickorn
-	- abimek
+  - JackNoordhuis
+  - Unickorn
+  - abimek

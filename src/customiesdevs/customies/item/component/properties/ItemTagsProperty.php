@@ -46,7 +46,7 @@ final class ItemTagsProperty implements ItemComponent {
 	public const TAG_DAMPERS = "minecraft:vibration_damper";
 	public const TAG_WOOL = "minecraft:wool";
 
-	private array $tags;
+	private array $tags = [];
 
 	/**
 	 * Determines which items tags are included on a given item.
