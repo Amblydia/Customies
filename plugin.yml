@@ -1,8 +1,10 @@
 name: Customies
-description: A PocketMine-MP plugin that implements support for custom blocks, items and entities.
+description: A PocketMine-MP plugin that implements support for custom blocks, items, sounds, particles and entities.
+prefix: Customies
 main: customiesdevs\customies\Customies
-version: 1.4.0
-api: 5.18.0
+version: 1.5.0
+api: 5.19.0
+website: https://github.com/Amblydia/Customies/wiki
 authors:
   - DenielWorld
   - TwistedAsylumMC

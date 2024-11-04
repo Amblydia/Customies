@@ -38,6 +38,7 @@ trait BlockComponentsTrait {
 
 	
 	/** 
+	 * This Creates a Normal Block Functions
 	 * @todo Work on more default values depending on different pm classes similar to items
 	 * Initializes the block with default components that are required for the block to function correctly.
 	 */
