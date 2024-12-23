@@ -86,7 +86,7 @@ final class CustomiesBlockFactory {
 	public function registerBlock(Closure $blockFunc, string $identifier, ?CreativeInventoryInfo $creativeInfo = null, ?Closure $serializer = null, ?Closure $deserializer = null): void {
 		$block = $blockFunc();
 		if(!$block instanceof Block) {
-			throw new InvalidArgumentException("Class returned from closure is not a Block");
+			throw new InvalidArgumentException("Class returned from closure is not a Block instance");
 		}
 
 		RuntimeBlockStateRegistry::getInstance()->register($block);
