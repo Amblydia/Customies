@@ -1,12 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
 use InvalidArgumentException;
 
-final class EnchantableValueProperty implements ItemComponent {
+final class EnchantableValueComponent implements ItemComponent {
 
 	// Armor Enchantability
 	public const ARMOR_LEATHER = 15;

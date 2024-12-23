@@ -35,10 +35,6 @@ final class UseModifiersComponent implements ItemComponent {
 		];
 	}
 
-	public function getUseDuration(): float {
-		return $this->useDuration;
-	}
-
 	public function isProperty(): bool {
 		return false;
 	}

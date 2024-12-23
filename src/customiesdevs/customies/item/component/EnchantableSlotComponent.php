@@ -1,11 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class EnchantableSlotProperty implements ItemComponent {
+final class EnchantableSlotComponent implements ItemComponent {
 
 	public const SLOT_ALL = "all";
 	public const SLOT_BOOTS = "armor_feet";

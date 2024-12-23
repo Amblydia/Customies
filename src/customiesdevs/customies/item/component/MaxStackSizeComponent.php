@@ -1,11 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class MaxStackSizeProperty implements ItemComponent {
+final class MaxStackSizeComponent implements ItemComponent {
 
 	private int $value;
 

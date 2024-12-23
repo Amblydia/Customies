@@ -2,7 +2,7 @@ name: Customies
 description: A PocketMine-MP plugin that implements support for custom blocks, items and entities.
 main: customiesdevs\customies\Customies
 version: 1.4.0
-api: 5.18.0
+api: 5.0.0
 authors:
   - DenielWorld
   - TwistedAsylumMC

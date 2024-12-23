@@ -1,18 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class StackedByDataProperty implements ItemComponent {
+final class ShouldDespawnComponent implements ItemComponent {
 
 	private bool $value;
 
 	/**
-	 * Determines if the same item with different aux values can stack. 
-	 * Additionally, this component defines whether the item actors can merge while floating in the world.
-	 * @param bool $value Should item stack, Default is set to `true`
+	 * Determines if an item should despawn while floating in the world.
+	 * @param bool $value item should eventually despawn while floating in the world, Default is set to `true`
 	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
 	public function __construct(bool $value = true) {
@@ -23,7 +20,7 @@ final class StackedByDataProperty implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "stacked_by_data";
+		return "should_despawn";
 	}
 
 	public function getValue(): bool {

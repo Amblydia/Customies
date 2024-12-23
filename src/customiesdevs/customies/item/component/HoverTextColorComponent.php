@@ -1,11 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class HoverTextColorProperty implements ItemComponent {
+final class HoverTextColorComponent implements ItemComponent {
 
 	private string $value;
 

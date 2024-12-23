@@ -1,16 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class CanDestroyInCreativeProperty implements ItemComponent {
+final class AllowOffHandComponent implements ItemComponent {
 
 	private bool $value;
 
 	/**
-	 * Determines if the item will break blocks in Creative Mode while swinging.
+	 * Determine whether an item can be placed in the off-hand slot of the inventory.
 	 * @param bool $value Default is set to `true`
 	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
@@ -22,7 +20,7 @@ final class CanDestroyInCreativeProperty implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "can_destroy_in_creative";
+		return "allow_off_hand";
 	}
 
 	public function getValue(): bool {

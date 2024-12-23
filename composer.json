@@ -1,6 +1,6 @@
 {
 	"name": "customiesdevs/customies",
-	"description": "Creates Custom Items & Block in Pocketmine-MP (Fork)",
+	"description": "Creates Custom Items & Blocks in Pocketmine-MP",
 	"version": "1.4.0",
 	"type": "library",
 	"license": "MIT",
@@ -20,13 +20,5 @@
 		"allow-plugins": {
 			"phpstan/extension-installer": true
 		}
-	},
-	"authors": [
-		{
-			"name": "JeanTKG",
-			"email": "jeantkg@gmail.com",
-			"role": "Fork-Developer",
-			"homepage": "https://discord.gg/H7suUH6RD5"
-		}
-	]
+	}
 }

@@ -1,17 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class AllowOffHandProperty implements ItemComponent {
+final class LiquidClippedComponent implements ItemComponent {
 
 	private bool $value;
 
 	/**
-	 * Determine whether an item can be placed in the off-hand slot of the inventory.
-	 * @param bool $value Default is set to `true`
+	 * Determines whether an item interacts with liquid blocks on use.
+	 * @param bool $value If the item interacts with liquid blocks on use
 	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
 	public function __construct(bool $value = true) {
@@ -22,7 +20,7 @@ final class AllowOffHandProperty implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "allow_off_hand";
+		return "liquid_clipped";
 	}
 
 	public function getValue(): bool {

@@ -1,12 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
 use customiesdevs\customies\item\CreativeInventoryInfo;
 
-final class CreativeGroupProperty implements ItemComponent {
+final class CreativeGroupComponent implements ItemComponent {
 
 	private CreativeInventoryInfo $creativeInfo;
 

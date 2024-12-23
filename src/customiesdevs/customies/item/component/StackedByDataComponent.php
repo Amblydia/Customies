@@ -1,17 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class HandEquippedProperty implements ItemComponent {
+final class StackedByDataComponent implements ItemComponent {
 
 	private bool $value;
 
 	/**
-	 * Determines if an item is rendered like a tool while in-hand.
-	 * @param bool $value Default is set to `true`
+	 * Determines if the same item with different aux values can stack. 
+	 * Additionally, this component defines whether the item actors can merge while floating in the world.
+	 * @param bool $value Should item stack, Default is set to `true`
 	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
 	public function __construct(bool $value = true) {
@@ -22,7 +21,7 @@ final class HandEquippedProperty implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "hand_equipped";
+		return "stacked_by_data";
 	}
 
 	public function getValue(): bool {

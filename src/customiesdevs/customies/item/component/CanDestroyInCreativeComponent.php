@@ -1,17 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class LiquidClippedProperty implements ItemComponent {
+final class CanDestroyInCreativeComponent implements ItemComponent {
 
 	private bool $value;
 
 	/**
-	 * Determines whether an item interacts with liquid blocks on use.
-	 * @param bool $value If the item interacts with liquid blocks on use
+	 * Determines if the item will break blocks in Creative Mode while swinging.
+	 * @param bool $value Default is set to `true`
 	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
 	public function __construct(bool $value = true) {
@@ -22,7 +20,7 @@ final class LiquidClippedProperty implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "liquid_clipped";
+		return "can_destroy_in_creative";
 	}
 
 	public function getValue(): bool {

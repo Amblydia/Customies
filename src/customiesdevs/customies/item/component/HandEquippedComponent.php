@@ -1,17 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class ShouldDespawnProperty implements ItemComponent {
+final class HandEquippedComponent implements ItemComponent {
 
 	private bool $value;
 
 	/**
-	 * Determines if an item should despawn while floating in the world.
-	 * @param bool $value item should eventually despawn while floating in the world, Default is set to `true`
+	 * Determines if an item is rendered like a tool while in-hand.
+	 * @param bool $value Default is set to `true`
 	 * @throws \InvalidArgumentException if `$value` is not a boolean.
 	 */
 	public function __construct(bool $value = true) {
@@ -22,7 +20,7 @@ final class ShouldDespawnProperty implements ItemComponent {
 	}
 
 	public function getName(): string {
-		return "should_despawn";
+		return "hand_equipped";
 	}
 
 	public function getValue(): bool {

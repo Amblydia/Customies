@@ -1,11 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class GlintProperty implements ItemComponent {
+final class GlintComponent implements ItemComponent {
 
 	private bool $value;
 

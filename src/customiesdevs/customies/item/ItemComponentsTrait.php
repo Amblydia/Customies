@@ -3,22 +3,21 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item;
 
+use customiesdevs\customies\item\component\CanDestroyInCreativeComponent;
 use customiesdevs\customies\item\component\CooldownComponent;
+use customiesdevs\customies\item\component\CreativeCategoryComponent;
+use customiesdevs\customies\item\component\CreativeGroupComponent;
 use customiesdevs\customies\item\component\DisplayNameComponent;
 use customiesdevs\customies\item\component\DurabilityComponent;
 use customiesdevs\customies\item\component\FoodComponent;
+use customiesdevs\customies\item\component\FrameCountComponent;
 use customiesdevs\customies\item\component\FuelComponent;
+use customiesdevs\customies\item\component\IconComponent;
 use customiesdevs\customies\item\component\ItemComponent;
+use customiesdevs\customies\item\component\ItemTagsComponent;
+use customiesdevs\customies\item\component\MaxStackSizeComponent;
+use customiesdevs\customies\item\component\MiningSpeedComponent;
 use customiesdevs\customies\item\component\ProjectileComponent;
-use customiesdevs\customies\item\component\properties\CanDestroyInCreativeProperty;
-use customiesdevs\customies\item\component\properties\CreativeCategoryProperty;
-use customiesdevs\customies\item\component\properties\CreativeGroupProperty;
-use customiesdevs\customies\item\component\properties\FrameCountProperty;
-use customiesdevs\customies\item\component\properties\IconProperty;
-use customiesdevs\customies\item\component\properties\ItemTagsProperty;
-use customiesdevs\customies\item\component\properties\MiningSpeedProperty;
-use customiesdevs\customies\item\component\properties\MaxStackSizeProperty;
-use customiesdevs\customies\item\component\properties\UseAnimationProperty;
 use customiesdevs\customies\item\component\TagsComponent;
 use customiesdevs\customies\item\component\ThrowableComponent;
 use customiesdevs\customies\item\component\UseModifiersComponent;
@@ -72,13 +71,13 @@ trait ItemComponentsTrait {
 	 */
 	protected function initComponent(string $texture, ?CreativeInventoryInfo $creativeInfo = null): void {
 		$creativeInfo ??= CreativeInventoryInfo::DEFAULT();
-		$this->addComponent(new CreativeCategoryProperty($creativeInfo));
-		$this->addComponent(new CreativeGroupProperty($creativeInfo));
-		$this->addComponent(new CanDestroyInCreativeProperty());
-		$this->addComponent(new IconProperty($texture));
-		$this->addComponent(new MaxStackSizeProperty($this->getMaxStackSize()));
-		$this->addComponent(new FrameCountProperty());
-		$this->addComponent(new MiningSpeedProperty());
+		$this->addComponent(new CreativeCategoryComponent($creativeInfo));
+		$this->addComponent(new CreativeGroupComponent($creativeInfo));
+		$this->addComponent(new CanDestroyInCreativeComponent());
+		$this->addComponent(new IconComponent($texture));
+		$this->addComponent(new MaxStackSizeComponent($this->getMaxStackSize()));
+		$this->addComponent(new FrameCountComponent());
+		$this->addComponent(new MiningSpeedComponent());
 		if($this instanceof Armor) {
 			$slot = match ($this->getArmorSlot()) {
 				ArmorInventory::SLOT_HEAD => WearableComponent::SLOT_ARMOR_HEAD,
@@ -88,17 +87,17 @@ trait ItemComponentsTrait {
 			};
 			$this->addComponent(new WearableComponent($slot, $this->getDefensePoints()));
 			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_ARMOR]));
-			$this->addComponent(new ItemTagsProperty([ItemTagsProperty::TAG_IS_ARMOR]));
+			$this->addComponent(new ItemTagsComponent([ItemTagsComponent::TAG_IS_ARMOR]));
 		}
 		if($this instanceof Consumable) {
 			if($this instanceof Food || $this instanceof FoodSource) {
 				$this->addComponent(new FoodComponent(!$this->requiresHunger()));
 			}
-			$this->addComponent(new UseAnimationProperty(UseAnimationProperty::ANIMATION_EAT));
+			$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_EAT));
 			$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_EAT));
 			$this->addComponent(new UseModifiersComponent(0.35, 1.6));
 			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_FOOD]));
-			$this->addComponent(new ItemTagsProperty([ItemTagsProperty::TAG_IS_FOOD]));
+			$this->addComponent(new ItemTagsComponent([ItemTagsComponent::TAG_IS_FOOD]));
 		}
 		if($this instanceof Durable) {
 			$this->addComponent(new DurabilityComponent($this->getMaxDurability()));

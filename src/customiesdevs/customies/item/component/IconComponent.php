@@ -1,11 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class IconProperty implements ItemComponent {
+final class IconComponent implements ItemComponent {
 
 	private string $default_texture;
 	private string $dyed_texture;
@@ -29,6 +27,7 @@ final class IconProperty implements ItemComponent {
 
 	public function getValue(): array {
 		return [
+			"texture" => $this->default_texture,
 			"textures" => [
 				"default" => $this->default_texture,
 				"dyed" => $this->dyed_texture,

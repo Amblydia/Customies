@@ -1,11 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\properties;
+namespace customiesdevs\customies\item\component;
 
-use customiesdevs\customies\item\component\ItemComponent;
-
-final class ItemTagsProperty implements ItemComponent {
+final class ItemTagsComponent implements ItemComponent {
 
 	# Tools
 	public const TAG_IS_SWORD = "minecraft:is_sword";
