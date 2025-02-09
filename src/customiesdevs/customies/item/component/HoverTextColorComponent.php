@@ -5,21 +5,26 @@ namespace customiesdevs\customies\item\component;
 
 final class HoverTextColorComponent implements ItemComponent {
 
-	private string $hoverTextColor;
+	private string $value;
 
-	public function __construct(string $hoverTextColor) {
-		$this->hoverTextColor = $hoverTextColor;
+	/**
+	 * Determines the color of the item name when hovering over it.
+	 * @param string $value Specifies the color of the item's hover text
+	 * @link [List of Color Code](https://minecraft.wiki/w/Formatting_codes#Color_codes)
+	 */
+	public function __construct(string $value = "§s") {
+		$this->value = $value;
 	}
 
 	public function getName(): string {
-		return "minecraft:hover_text_color";
+		return "hover_text_color";
 	}
 
 	public function getValue(): string {
-		return $this->hoverTextColor;
+		return $this->value;
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

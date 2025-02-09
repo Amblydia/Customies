@@ -5,21 +5,29 @@ namespace customiesdevs\customies\item\component;
 
 final class GlintComponent implements ItemComponent {
 
-	private bool $glint;
+	private bool $value;
 
-	public function __construct(bool $glint = false) {
-		$this->glint = $glint;
+	/**
+	 * Determines whether the item has the enchanted glint render effect on it.
+	 * @param bool $value Default is set to `true`
+	 * @throws \InvalidArgumentException if `$value` is not a boolean.
+	 */
+	public function __construct(bool $value = true) {
+		if(!is_bool($value)){
+			throw new \InvalidArgumentException("A boolean value (true or false) must be specified for 'value'");
+		}
+		$this->value = $value;
 	}
 
 	public function getName(): string {
-		return "minecraft:glint";
+		return "foil";
 	}
 
-	public function getValue(): array {
-		return ["value" => $this->glint];
+	public function getValue(): bool {
+		return $this->value;
 	}
 
 	public function isProperty(): bool {
-		return false;
+		return true;
 	}
 }

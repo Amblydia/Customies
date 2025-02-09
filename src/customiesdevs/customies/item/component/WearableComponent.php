@@ -7,34 +7,21 @@ use InvalidArgumentException;
 
 final class WearableComponent implements ItemComponent {
 
-<<<<<<< Updated upstream
-	public const SLOT_ARMOR = "slot.armor";
-	public const SLOT_ARMOR_CHEST = "slot.armor.chest";
-	public const SLOT_ARMOR_FEET = "slot.armor.feet";
-	public const SLOT_ARMOR_HEAD = "slot.armor.head";
-	public const SLOT_ARMOR_LEGS = "slot.armor.legs";
-	public const SLOT_WEAPON_MAIN_HAND = "slot.weapon.mainhand";
-	public const SLOT_WEAPON_OFF_HAND = "slot.weapon.offhand";
-=======
 	public const SLOT_ARMOR_HEAD = "slot.armor.head"; // Helmet
 	public const SLOT_ARMOR_CHEST = "slot.armor.chest"; // Chestplate
 	public const SLOT_ARMOR_LEGS = "slot.armor.legs"; // Leggings
 	public const SLOT_ARMOR_FEET = "slot.armor.feet"; // Boots
 	public const SLOT_WEAPON_OFF_HAND = "slot.weapon.offhand"; // Offhand
->>>>>>> Stashed changes
 
 	private string $slot;
 	private int $protection;
 
-<<<<<<< Updated upstream
-=======
 	/**
 	 * Sets the wearable item component.
 	 * @param string $slot Specifies where the item can be worn
 	 * @param int $protection How much protection the wearable item provides
 	 * @throws InvalidArgumentException if `$protection` is below 0.
 	 */
->>>>>>> Stashed changes
 	public function __construct(string $slot, int $protection = 0) {
 		if($protection < 0){
 			throw new InvalidArgumentException("protection must be above 0");

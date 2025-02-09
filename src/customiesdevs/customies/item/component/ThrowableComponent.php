@@ -12,14 +12,16 @@ final class ThrowableComponent implements ItemComponent {
 	private float $minDrawDuration;
 	private bool $scalePowerByDrawDuration;
 
-	public function __construct(
-		bool $doSwingAnimation = false, 
-		float $launchPowerScale = 1.0,
-		float $maxDrawDuration = 0.0,
-		float $maxLaunchPower = 1.0,
-		float $minDrawDuration = 0.0,
-		bool $scalePowerByDrawDuration = false
- 	) {
+	/**
+	 * Sets the throwable item component.
+	 * @param bool $doSwingAnimation Determines whether the item should use the swing animation when thrown
+	 * @param float $launchPowerScale The scale at which the power of the throw increases
+	 * @param float $maxDrawDuration The maximum duration to draw a throwable item
+	 * @param float $maxLaunchPower The maximum power to launch the throwable item
+	 * @param float $minDrawDuration The minimum duration to draw a throwable item
+	 * @param bool $scalePowerByDrawDuration Whether or not the power of the throw increases with duration charged
+	 */
+	public function __construct(bool $doSwingAnimation = false, float $launchPowerScale = 1.0, float $maxDrawDuration = 0.0, float $maxLaunchPower = 1.0, float $minDrawDuration = 0.0, bool $scalePowerByDrawDuration = false) {
 		$this->doSwingAnimation = $doSwingAnimation;
 		$this->launchPowerScale = $launchPowerScale;
 		$this->maxDrawDuration = $maxDrawDuration;

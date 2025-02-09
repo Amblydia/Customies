@@ -26,9 +26,7 @@ final class CustomiesListener implements Listener {
 	private array $cachedBlockPalette = [];
 	private Experiments $experiments;
 
-	public function __construct() {
-
-	}
+	public function __construct() {}
 
 	public function onDataPacketSend(DataPacketSendEvent $event): void {
 		foreach($event->getPackets() as $packet){

@@ -3,17 +3,11 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item\component;
 
+use pocketmine\block\Block;
+use pocketmine\world\format\io\GlobalBlockStateHandlers;
+
 final class BlockPlacerComponent implements ItemComponent {
 
-<<<<<<< Updated upstream
-    private string $blockIdentifier;
-    private array $useOn;
-
-    public function __construct(string $blockIdentifier, array $useOn) {
-        $this->blockIdentifier = $blockIdentifier;
-        $this->useOn = $useOn;
-    }
-=======
 	private Block $block;
 	private bool $canUseBlockAsIcon;
 	private array $useOn = [];
@@ -27,20 +21,11 @@ final class BlockPlacerComponent implements ItemComponent {
 		$this->block = $block;
 		$this->canUseBlockAsIcon = $canUseBlockAsIcon;
 	}
->>>>>>> Stashed changes
 
-    public function getName(): string {
-        return "minecraft:block_placer";
-    }
+	public function getName(): string {
+		return "minecraft:block_placer";
+	}
 
-<<<<<<< Updated upstream
-    public function getValue(): array {
-        return [
-            "block" => $this->blockIdentifier,
-            "use_on" => $this->useOn
-        ];
-    }
-=======
 	public function getValue(): array {
 		return [
 			"block" => GlobalBlockStateHandlers::getSerializer()->serialize($this->block->getStateId())->getName(),
@@ -48,9 +33,21 @@ final class BlockPlacerComponent implements ItemComponent {
 			"use_on" => $this->useOn
 		];
 	}
->>>>>>> Stashed changes
 
-    public function isProperty(): bool {
-        return false;
-    }
+	public function isProperty(): bool {
+		return false;
+	}
+
+	/**
+	 * Add blocks to the `use_on` array in the required format.
+	 * @param Block ...$blocks
+	 */
+	public function useOn(Block ...$blocks): self{
+		foreach($blocks as $block){
+			$this->useOn[] = [
+				"name" => GlobalBlockStateHandlers::getSerializer()->serialize($block->getStateId())->getName()
+			];
+		}
+		return $this;
+	}
 }

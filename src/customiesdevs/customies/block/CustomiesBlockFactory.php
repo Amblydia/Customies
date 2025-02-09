@@ -86,7 +86,7 @@ final class CustomiesBlockFactory {
 	public function registerBlock(Closure $blockFunc, string $identifier, ?CreativeInventoryInfo $creativeInfo = null, ?Closure $serializer = null, ?Closure $deserializer = null): void {
 		$block = $blockFunc();
 		if(!$block instanceof Block) {
-			throw new InvalidArgumentException("Class returned from closure is not a Block");
+			throw new InvalidArgumentException("Class returned from closure is not a Block instance");
 		}
 
 		RuntimeBlockStateRegistry::getInstance()->register($block);
@@ -166,7 +166,7 @@ final class CustomiesBlockFactory {
 			->setTag("menu_category", CompoundTag::create()
 				->setString("category", $creativeInfo->getCategory() ?? "")
 				->setString("group", $creativeInfo->getGroup() ?? ""))
-			->setInt("molangVersion", 1);
+			->setInt("molangVersion", 12);
 
 		CreativeInventory::getInstance()->add($block->asItem());
 

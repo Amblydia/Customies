@@ -105,6 +105,7 @@ final class CreativeInventoryInfo {
 
 	/**
 	 * Returns the numeric representation of the category the item is part of.
+	 * @return int Default is set to `1`
 	 */
 	public function getNumericCategory(): int {
 		return match ($this->getCategory()) {
@@ -112,7 +113,7 @@ final class CreativeInventoryInfo {
 			self::CATEGORY_NATURE => 2,
 			self::CATEGORY_EQUIPMENT => 3,
 			self::CATEGORY_ITEMS => 4,
-			default => 0
+			default => 1
 		};
 	}
 
