@@ -6,8 +6,13 @@ namespace customiesdevs\customies\item\component;
 final class EntityPlacerComponent implements ItemComponent {
 
 	private string $entity;
+<<<<<<< Updated upstream
 	private array $dispense_on;
     private array $use_on;
+=======
+	private array $dispenseOn = [];
+	private array $useOn = [];
+>>>>>>> Stashed changes
 
 	public function __construct(string $entity, array $dispense_on, array $use_on) {
 		$this->entity = $entity;

@@ -10,7 +10,7 @@ use function implode;
 
 final class DiggerComponent implements ItemComponent {
 
-	private array $destroySpeeds;
+	private array $destroySpeeds = [];
 	private bool $useEfficiency;
 
 	public function __construct(bool $useEfficiency) {

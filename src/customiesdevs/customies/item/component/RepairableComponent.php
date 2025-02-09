@@ -5,7 +5,7 @@ namespace customiesdevs\customies\item\component;
 
 final class RepairableComponent implements ItemComponent {
 
-	private array $items;
+	private array $items = [];
 
 	public function __construct() {
 	}
