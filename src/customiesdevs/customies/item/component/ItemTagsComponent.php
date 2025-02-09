@@ -30,6 +30,7 @@ final class ItemTagsComponent implements ItemComponent {
 	public const TAG_DIAMOND_TIER = "minecraft:diamond_tier";
 	public const TAG_NETHERITE_TIER = "minecraft:netherite_tier";
 	# Trims
+	public const TAG_TRIM_MATERIALS = "minecraft:trim_materials";
 	public const TAG_UPGRADE_TEMPLATE = "minecraft:transform_templates";
 	public const TAG_TRIM_TEMPLATES = "minecraft:trim_templates";
 	public const TAG_TRIMMABLE = "minecraft:trimmable_armors"; // makes templates work on armors
@@ -43,6 +44,7 @@ final class ItemTagsComponent implements ItemComponent {
 	public const TAG_SPAWNEGG = "minecraft:spawn_egg";
 	public const TAG_DAMPERS = "minecraft:vibration_damper";
 	public const TAG_WOOL = "minecraft:wool";
+	public const TAG_FUEL = "minecraft:coals";
 
 	private array $tags = [];
 
