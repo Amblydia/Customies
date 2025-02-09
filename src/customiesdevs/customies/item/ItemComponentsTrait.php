@@ -7,11 +7,13 @@ use customiesdevs\customies\item\component\CanDestroyInCreativeComponent;
 use customiesdevs\customies\item\component\CooldownComponent;
 use customiesdevs\customies\item\component\CreativeCategoryComponent;
 use customiesdevs\customies\item\component\CreativeGroupComponent;
+use customiesdevs\customies\item\component\DamageComponent;
 use customiesdevs\customies\item\component\DisplayNameComponent;
 use customiesdevs\customies\item\component\DurabilityComponent;
 use customiesdevs\customies\item\component\FoodComponent;
 use customiesdevs\customies\item\component\FrameCountComponent;
 use customiesdevs\customies\item\component\FuelComponent;
+use customiesdevs\customies\item\component\HandEquippedComponent;
 use customiesdevs\customies\item\component\IconComponent;
 use customiesdevs\customies\item\component\ItemComponent;
 use customiesdevs\customies\item\component\ItemTagsComponent;
@@ -30,6 +32,8 @@ use pocketmine\inventory\ArmorInventory;
 use pocketmine\item\Armor;
 use pocketmine\item\Durable;
 use pocketmine\item\Food;
+use pocketmine\item\Sword;
+use pocketmine\item\Tool;
 use pocketmine\item\ProjectileItem;
 use pocketmine\nbt\tag\CompoundTag;
 use RuntimeException;
@@ -111,6 +115,15 @@ trait ItemComponentsTrait {
 		}
 		if($this->getFuelTime() > 0) {
 			$this->addComponent(new FuelComponent($this->getFuelTime()));
+		}
+		if($this->getAttackPoints() > 0){
+			$this->addComponent(new DamageComponent($this->getAttackPoints() - 1));
+		}
+		if($this instanceof Tool) {
+			$this->addComponent(new HandEquippedComponent(true));
+			if($this instanceof Sword){
+				$this->addComponent(new CanDestroyInCreativeComponent(false));
+			}
 		}
 	}
 
