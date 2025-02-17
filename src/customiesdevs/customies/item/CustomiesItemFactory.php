@@ -109,7 +109,7 @@ final class CustomiesItemFactory {
 			$identifier,
 			$itemId,
 			false,
-			0,
+			2,
 			new CacheableNbt(CompoundTag::create())
 		);
 		
