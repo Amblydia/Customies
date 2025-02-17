@@ -3,7 +3,7 @@ description: A PocketMine-MP plugin that implements support for custom blocks, i
 prefix: Customies
 main: customiesdevs\customies\Customies
 version: 1.5.0
-api: 5.0.0
+api: 5.25.0
 website: https://github.com/Amblydia/Customies/wiki
 authors:
   - DenielWorld
