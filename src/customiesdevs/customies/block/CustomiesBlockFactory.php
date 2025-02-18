@@ -63,10 +63,10 @@ final class CustomiesBlockFactory {
 	/**
 	 * Get a custom block from its identifier. An exception will be thrown if the block is not registered.
 	 */
-	public function get(string $identifier): Block {
+	public function get(string $identifier): ?Block {
 		return clone (
 			$this->customBlocks[$identifier] ??
-			throw new InvalidArgumentException("Custom block $identifier is not registered")
+			null
 		);
 	}
 
@@ -170,7 +170,13 @@ final class CustomiesBlockFactory {
 				->setString("group", $creativeInfo->getGroup() ?? ""))
 			->setInt("molangVersion", 12);
 
-		CreativeInventory::getInstance()->add($block->asItem(), CreativeCategory::ITEMS);
+		CreativeInventory::getInstance()->add($block->asItem(), match($creativeInfo->getCategory()){
+			CreativeInventoryInfo::CATEGORY_CONSTRUCTION => CreativeCategory::CONSTRUCTION,
+			CreativeInventoryInfo::CATEGORY_ITEMS => CreativeCategory::ITEMS,
+			CreativeInventoryInfo::CATEGORY_NATURE => CreativeCategory::NATURE,
+			CreativeInventoryInfo::CATEGORY_EQUIPMENT => CreativeCategory::EQUIPMENT,
+			default => throw new \pocketmine\utils\AssumptionFailedError("Unknown category")
+		});
 
 		$this->blockPaletteEntries[] = new BlockPaletteEntry($identifier, new CacheableNbt($propertiesTag));
 		$this->blockFuncs[$identifier] = [$blockFunc, $serializer, $deserializer];
@@ -183,7 +189,9 @@ final class CustomiesBlockFactory {
 		foreach($this->blockPaletteEntries as $i => $entry) {
 			$root = $entry->getStates()->getRoot()
 				->setTag("vanilla_block_data", CompoundTag::create()
-					->setInt("block_id", 10000 + $i));
+					->setInt("block_id", 10000 + $i)
+					->setString("material", "dirt")
+				);
 			$this->blockPaletteEntries[$i] = new BlockPaletteEntry($entry->getName(), new CacheableNbt($root));
 		}
 	}

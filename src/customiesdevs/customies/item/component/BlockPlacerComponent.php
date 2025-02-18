@@ -29,7 +29,7 @@ final class BlockPlacerComponent implements ItemComponent {
 	public function getValue(): array {
 		return [
 			"block" => GlobalBlockStateHandlers::getSerializer()->serialize($this->block->getStateId())->getName(),
-			"canUseBlockAsIcon" => $this->canUseBlockAsIcon,
+			"canUseBlockAsIcon" => $this->canUseBlockAsIcon ? 1 : 0,
 			"use_on" => $this->useOn
 		];
 	}

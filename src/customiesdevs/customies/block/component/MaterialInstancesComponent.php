@@ -24,6 +24,7 @@ class MaterialInstancesComponent implements BlockComponent {
 	private string $renderMethod;
 	private bool $ambientOcclusion;
 	private bool $faceDimming;
+	private string $tint_Method;
 
 	/**
 	 * The material instances for a block. Maps face or material_instance names in a geometry file to an actual material instance. You can assign a material instance object to any of these faces: "up", "down", "north", "south", "east", "west", or "*"
@@ -32,19 +33,22 @@ class MaterialInstancesComponent implements BlockComponent {
 	 * @param string $renderMethod The render method to use
 	 * @param bool $ambientOcclusion Should this material have ambient occlusion applied when lighting? If true, shadows will be created around and underneath the block.
 	 * @param bool $faceDimming Should this material be dimmed by the direction it's facing?
+	 * @param string $tint_Method idk
 	 */
 	public function __construct(
 		string $target, 
 		string $texture, 
 		string $renderMethod = self::RENDER_METHOD_OPAQUE, 
 		bool $ambientOcclusion = true, 
-		bool $faceDimming = true
+		bool $faceDimming = true,
+		string $tint_Method = "none"
 	) {
 		$this->target = $target;
 		$this->texture = $texture;
 		$this->ambientOcclusion = $ambientOcclusion;
 		$this->faceDimming = $faceDimming;
 		$this->renderMethod = $renderMethod;
+		$this->tint_Method = $tint_Method;
 	}
 
 	public function getName(): string {
@@ -60,6 +64,7 @@ class MaterialInstancesComponent implements BlockComponent {
 					->setString("render_method", $this->renderMethod)
 					->setByte("face_dimming", $this->faceDimming ? 1 : 0)
 					->setByte("ambient_occlusion", $this->ambientOcclusion ? 1 : 0)
+					->setString("tint_method", $this->tint_Method)
 				)
 			);
 	}
