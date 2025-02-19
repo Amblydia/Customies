@@ -33,7 +33,7 @@ final class ItemTagsComponent implements ItemComponent {
 	public const TAG_TRIM_MATERIALS = "minecraft:trim_materials";
 	public const TAG_UPGRADE_TEMPLATE = "minecraft:transform_templates";
 	public const TAG_TRIM_TEMPLATES = "minecraft:trim_templates";
-	public const TAG_TRIMMABLE = "minecraft:trimmable_armors"; // makes templates work on armors
+	public const TAG_TRIMMABLE = "minecraft:trimmable_armors";
 	# Other
 	public const TAG_ARROW = "minecraft:arrow";
 	public const TAG_BANNER = "minecraft:banner";

@@ -15,7 +15,7 @@ class BreathabilityComponent implements BlockComponent {
 	 * Determines whether the block is breathable by defining if the block is treated as a `solid` or as `air`. The default is `solid` if this component is omitted
 	 * @param string $breathability state of the block
 	 */
-	public function __construct(string $breathability = self::SOLID) {
+	public function __construct(string $breathability = BreathabilityComponent::SOLID) {
 		$this->breathability = $breathability;
 	}
 

@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component;
+namespace customiesdevs\customies\item\component\extra;
+
+use customiesdevs\customies\item\component\ItemComponent;
 
 final class FrameCountComponent implements ItemComponent {
 

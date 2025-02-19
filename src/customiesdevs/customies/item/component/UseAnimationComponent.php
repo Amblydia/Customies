@@ -22,7 +22,7 @@ final class UseAnimationComponent implements ItemComponent {
 	 * Determines which animation plays when using an item.
 	 * @param int $value Specifies which animation to play when the the item is used, Default is set to `0`
 	 */
-	public function __construct(int $value = self::ANIMATION_NONE) {
+	public function __construct(int $value = UseAnimationComponent::ANIMATION_NONE) {
 		$this->value = $value;
 	}
 

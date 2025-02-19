@@ -4,53 +4,72 @@ declare(strict_types=1);
 namespace customiesdevs\customies\item;
 
 use customiesdevs\customies\item\component\AllowOffHandComponent;
-use customiesdevs\customies\item\component\BlockPlacerComponent;
-use customiesdevs\customies\item\component\BlockPlacerExtraComponent;
 use customiesdevs\customies\item\component\CanDestroyInCreativeComponent;
 use customiesdevs\customies\item\component\CooldownComponent;
 use customiesdevs\customies\item\component\CreativeCategoryComponent;
 use customiesdevs\customies\item\component\CreativeGroupComponent;
+use customiesdevs\customies\item\component\DamageAbsorptionComponent;
 use customiesdevs\customies\item\component\DamageComponent;
 use customiesdevs\customies\item\component\DiggerComponent;
 use customiesdevs\customies\item\component\DisplayNameComponent;
 use customiesdevs\customies\item\component\DurabilityComponent;
+use customiesdevs\customies\item\component\DurabilitySensorComponent;
+use customiesdevs\customies\item\component\DyeableComponent;
 use customiesdevs\customies\item\component\EnchantableSlotComponent;
 use customiesdevs\customies\item\component\EnchantableValueComponent;
+use customiesdevs\customies\item\component\extra\BlockPlacerComponent;
+use customiesdevs\customies\item\component\extra\FrameCountComponent;
+use customiesdevs\customies\item\component\extra\MiningSpeedComponent;
 use customiesdevs\customies\item\component\FoodComponent;
-use customiesdevs\customies\item\component\FrameCountComponent;
 use customiesdevs\customies\item\component\FuelComponent;
+use customiesdevs\customies\item\component\GlintComponent;
 use customiesdevs\customies\item\component\HandEquippedComponent;
+use customiesdevs\customies\item\component\HoverTextColorComponent;
 use customiesdevs\customies\item\component\IconComponent;
+use customiesdevs\customies\item\component\InteractButtonComponent;
 use customiesdevs\customies\item\component\ItemComponent;
 use customiesdevs\customies\item\component\ItemTagsComponent;
+use customiesdevs\customies\item\component\LiquidClippedComponent;
 use customiesdevs\customies\item\component\MaxStackSizeComponent;
-use customiesdevs\customies\item\component\MiningSpeedComponent;
 use customiesdevs\customies\item\component\ProjectileComponent;
 use customiesdevs\customies\item\component\RarityComponent;
+use customiesdevs\customies\item\component\RecordComponent;
 use customiesdevs\customies\item\component\RepairableComponent;
+use customiesdevs\customies\item\component\SeedComponent;
+use customiesdevs\customies\item\component\ShooterComponent;
 use customiesdevs\customies\item\component\ShouldDespawnComponent;
 use customiesdevs\customies\item\component\StackedByDataComponent;
+use customiesdevs\customies\item\component\StorageItemComponent;
+use customiesdevs\customies\item\component\StorageWeightLimitComponent;
+use customiesdevs\customies\item\component\StorageWeightModifierComponent;
 use customiesdevs\customies\item\component\TagsComponent;
 use customiesdevs\customies\item\component\ThrowableComponent;
-use customiesdevs\customies\item\component\UseModifiersComponent;
 use customiesdevs\customies\item\component\UseAnimationComponent;
+use customiesdevs\customies\item\component\UseDurationComponent;
+use customiesdevs\customies\item\component\UseModifiersComponent;
 use customiesdevs\customies\item\component\WearableComponent;
 use customiesdevs\customies\util\NBT;
+
+use pocketmine\block\VanillaItems;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\entity\Consumable;
 use pocketmine\entity\FoodSource;
 use pocketmine\inventory\ArmorInventory;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\nbt\tag\ListTag;
 use pocketmine\item\Armor;
 use pocketmine\item\Axe;
 use pocketmine\item\Durable;
 use pocketmine\item\Food;
 use pocketmine\item\Item;
-use pocketmine\item\Sword;
-use pocketmine\item\Tool;
+use pocketmine\item\ItemBlock;
+use pocketmine\item\LiquidBucket;
 use pocketmine\item\Pickaxe;
 use pocketmine\item\ProjectileItem;
+use pocketmine\item\Releasable;
 use pocketmine\item\Shovel;
-use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\item\Sword;
+use pocketmine\item\Tool;
 use RuntimeException;
 
 trait ItemComponentsTrait {
@@ -79,6 +98,7 @@ trait ItemComponentsTrait {
 				continue;
 			}
 			$components->setTag("item_properties", $properties);
+			$components->setTag("item_tags", new ListTag([]));
 			$components->setTag($component->getName(), $tag);
 		}
 		return CompoundTag::create()
@@ -95,10 +115,12 @@ trait ItemComponentsTrait {
 
 		$this->addComponent(new IconComponent($texture));
 		$this->addComponent(new MaxStackSizeComponent($this->getMaxStackSize()));
-		$this->addComponent(new FrameCountComponent());
+		$this->addComponent(new GlintComponent(false));
+		$this->addComponent(new FrameCountComponent(1));
+		$this->addComponent(new LiquidClippedComponent(false));
 		$this->addComponent(new MiningSpeedComponent(1));
 		$this->addComponent(new ShouldDespawnComponent(true));
-		$this->addComponent(new StackedByDataComponent(true));
+		// $this->addComponent(new StackedByDataComponent(true));
 		$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_NONE));
 		if($this instanceof Item){
 			$this->addComponent(new CanDestroyInCreativeComponent(true));
@@ -112,10 +134,6 @@ trait ItemComponentsTrait {
 				$this->addComponent(new FuelComponent($this->getFuelTime()));
 				$this->addComponent(new TagsComponent([TagsComponent::TAG_FUEL]));
 				$this->addComponent(new ItemTagsComponent([ItemTagsComponent::TAG_FUEL]));
-			}
-			if($this->canBePlaced()){
-				$this->addComponent(new BlockPlacerExtraComponent(true));
-				$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_BLOCK));
 			}
 			if($this->getCooldownTicks() > 0){
 				$this->addComponent(new StackedByDataComponent(false));

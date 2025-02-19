@@ -9,12 +9,12 @@ final class AllowOffHandComponent implements ItemComponent {
 
 	/**
 	 * Determine whether an item can be placed in the off-hand slot of the inventory.
-	 * @param bool $value Default is set to `true`
-	 * @throws \InvalidArgumentException if `$value` is not a boolean.
+	 * @param bool $value
+	 * @throws \InvalidArgumentException if `$value` variable is not a boolean.
 	 */
-	public function __construct(bool $value = true) {
+	public function __construct(bool $value) {
 		if(!is_bool($value)){
-			throw new \InvalidArgumentException("A boolean value (true or false) must be specified for 'value'");
+			throw new \InvalidArgumentException("A boolean value (true or false) must be specified for variable 'value'");
 		}
 		$this->value = $value;
 	}

@@ -3,23 +3,18 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item\component;
 
-use InvalidArgumentException;
-
-final class StorageComponent implements ItemComponent {
-
-	private bool $allow_nested_storage_items;
+final class StorageItemComponent implements ItemComponent {
+	
 	private array $allowed_items = [];
 	private array $banned_items = [];
+	private bool $allow_nested_storage_items;
 	private int $max_slots;
-	private int $max_weight_limit;
-	private int $weight_in_storage_item;
-
 	/**
 	 * A dynamic container is a container for storing items that is linked to an item instead of a block or an entity.
 	 * @param bool $allow_nested_storage_items Allows other items with a minecraft:storage_item component to be put inside it.
 	 * @param int $max_slots Range: [`1` to `64`]. Defines the number of slots of the dynamic container; specifically, the number of unique items allowed in the storage item.
-	 * @throws InvalidArgumentException if `$allow_nested_storage_items` is not a boolean.
-	 * @throws InvalidArgumentException if `$max_slots` is not in bound (`1`-`64`).
+	 * @throws \InvalidArgumentException if `$allow_nested_storage_items` is not a boolean.
+	 * @throws \InvalidArgumentException if `$max_slots` is not in bound (`1`-`64`).
 	 */
 	public function __construct(
 		int $max_slots = 64,
@@ -29,7 +24,7 @@ final class StorageComponent implements ItemComponent {
 			throw new \InvalidArgumentException("A boolean value (true or false) must be specified for 'allow_nested_storage_items'");
 		}
 		if($max_slots < 1 || $max_slots > 64){
-			throw new InvalidArgumentException("max_slots must be between 1 or 64");
+			throw new \InvalidArgumentException("max_slots must be between 1 or 64");
 		}
 		$this->allow_nested_storage_items = $allow_nested_storage_items;
 		$this->max_slots = $max_slots;
@@ -52,14 +47,14 @@ final class StorageComponent implements ItemComponent {
 		return false;
 	}
 
-	public function addAllowedItems(array $items = []): StorageComponent {
+	public function addAllowedItems(array $items = []): StorageItemComponent {
         foreach ($items as $item) {
             $this->allowed_items[] = ["name" => "minecraft:" . $item];
         }
         return $this;
     }
 
-    public function addBannedItems(array $items = []): StorageComponent {
+    public function addBannedItems(array $items = []): StorageItemComponent {
         foreach ($items as $item) {
             $this->banned_items[] = ["name" => "minecraft:" . $item];
         }

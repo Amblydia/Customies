@@ -15,6 +15,7 @@ use customiesdevs\customies\block\component\BlockComponent;
 use InvalidArgumentException;
 use pocketmine\block\Block;
 use pocketmine\block\RuntimeBlockStateRegistry;
+use pocketmine\block\BlockTypeTags;
 use pocketmine\data\bedrock\block\BlockStateData;
 use pocketmine\data\bedrock\block\convert\BlockStateReader;
 use pocketmine\data\bedrock\block\convert\BlockStateWriter;
@@ -190,7 +191,7 @@ final class CustomiesBlockFactory {
 			$root = $entry->getStates()->getRoot()
 				->setTag("vanilla_block_data", CompoundTag::create()
 					->setInt("block_id", 10000 + $i)
-					->setString("material", "dirt")
+					->setString("material", BlockTypeTags::DIRT)
 				);
 			$this->blockPaletteEntries[$i] = new BlockPaletteEntry($entry->getName(), new CacheableNbt($root));
 		}

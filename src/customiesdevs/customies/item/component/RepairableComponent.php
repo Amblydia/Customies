@@ -23,21 +23,21 @@ final class RepairableComponent implements ItemComponent {
 		];
 	}
 
-	public function withItems(array $items, int|string $repair_amount = 0): RepairableComponent {
-			$this->items = [
-				"items" => [],
-				"repair_amount" => [
-					"expression" => $repair_amount,
-					"version" => 0
-				]
-			];
-			foreach ($items as $item) {
-				$this->items["items"][] = ["name" => $item];
-			}
-		return $this;
-	}
-
 	public function isProperty(): bool {
 		return false;
+	}
+
+	public function withItems(array $items, int|string $repair_amount = 0): RepairableComponent {
+		$this->items = [
+			"items" => [],
+			"repair_amount" => [
+				"expression" => $repair_amount,
+				"version" => 0
+			]
+		];
+		foreach($items as $item){
+			$this->items["items"][] = ["name" => $item];
+		}
+		return $this;
 	}
 }

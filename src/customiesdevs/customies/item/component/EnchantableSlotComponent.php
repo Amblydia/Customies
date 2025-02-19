@@ -30,7 +30,7 @@ final class EnchantableSlotComponent implements ItemComponent {
 	 * What enchantments can be applied (ex. Using bow would allow this item to be enchanted as if it were a bow).
 	 * @param string $slot Specifies which types of enchantments can be applied. For example, `bow` would allow this item to be enchanted as if it were a bow
 	 */
-	public function __construct(string $slot = self::SLOT_ALL) {
+	public function __construct(string $slot = EnchantableSlotComponent::SLOT_ALL) {
 		$this->slot = $slot;
 	}
 

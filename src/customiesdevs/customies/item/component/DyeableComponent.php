@@ -9,7 +9,7 @@ final class DyeableComponent implements ItemComponent {
 
 	/**
 	 * Enables custom items to be dyed in cauldrons.
-	 * @param string $hex The hex color code (e.g "#47ff5a")
+	 * @param string $hex The hex color code (e.g `#47ff5a`)
 	 */
 	public function __construct(string $hex) {
 		$this->hex = $hex;

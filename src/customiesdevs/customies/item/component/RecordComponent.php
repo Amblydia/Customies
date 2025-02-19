@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item\component;
 
-use InvalidArgumentException;
-
 final class RecordComponent implements ItemComponent {
 
 	private int $comparatorSignal;
@@ -20,7 +18,7 @@ final class RecordComponent implements ItemComponent {
 	 */
 	public function __construct(int $comparatorSignal = 1, float $duration, string $soundEvent = "undefined") {
 		if($comparatorSignal < 1 || $comparatorSignal > 13){
-			throw new InvalidArgumentException("comparatorSignal must be between 1 or 13");
+			throw new \InvalidArgumentException("comparatorSignal must be between 1 or 13");
 		}
 		$this->comparatorSignal = $comparatorSignal;
 		$this->duration = $duration;

@@ -10,8 +10,13 @@ final class DamageAbsorptionComponent implements ItemComponent {
     /**
      * Causes the item to absorb damage that would otherwise be dealt to its wearer.
      * For this to happen, the item needs to have the durability component and be equipped in an armor slot.
-     */
-	public function __construct(array $cause = null) {
+	 * @param array $cause List of damage causes (such as entity_attack and magma) that can be absorbed by the item.
+     * @throws \InvalidArgumentException if `$cause` variable is empty.
+	 */
+	public function __construct(array $cause = ["all"]) {
+		if(empty($cause)){
+			throw new \InvalidArgumentException("cause variable is empty");
+		}
         $this->cause = $cause;
 	}
 
@@ -21,7 +26,7 @@ final class DamageAbsorptionComponent implements ItemComponent {
 
 	public function getValue(): array {
 		return [
-			"absorbable_causes" => $this->cause ?? ["all"]
+			"absorbable_causes" => $this->cause
 		];
 	}
 

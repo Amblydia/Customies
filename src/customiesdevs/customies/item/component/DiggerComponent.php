@@ -14,10 +14,14 @@ final class DiggerComponent implements ItemComponent {
 	private bool $useEfficiency;
 
 	/**
-	 * Allows a creator to determine how quickly an item can dig specific blocks.
-	 * @param bool $useEfficiency Determines whether this item should be impacted if the efficiency enchantment is applied to i
+	 * Determine how quickly an item can dig specific blocks.
+	 * @param bool $useEfficiency Determines whether the item should be impacted if the `efficiency` enchant is applied to it.
+	 * @throws \InvalidArgumentException if `$useEfficiency` is not a boolen.
 	 */
-	public function __construct(bool $useEfficiency) {
+	public function __construct(bool $useEfficiency){
+		if(!is_bool($useEfficiency)){
+			throw new \InvalidArgumentException("A boolean useEfficiency (true or false) must be specified for varible 'useEfficiency'");
+		}
 		$this->useEfficiency = $useEfficiency;
 	}
 
