@@ -8,13 +8,16 @@ class GeometryComponent implements BlockComponent {
 
 	private string $geometry;
 	private CompoundTag $boneVisibility;
+	private bool $enableBone;
 
 	/**
 	 * The description identifier of the geometry to use to render this block. This identifier must either match an existing geometry identifier in any of the loaded resource packs or be one of the currently supported Vanilla identifiers: "minecraft:geometry.full_block" or "minecraft:geometry.cross".
 	 * @param string $geometry
+	 * @param bool $enableBone
 	 */
-	public function __construct(string $geometry = "geometry.full_block") {
+	public function __construct(string $geometry = "geometry.full_block", bool $enableBone = false) {
 		$this->geometry = $geometry;
+		$this->enableBone = $enableBone;
 		$this->boneVisibility = CompoundTag::create();
 	}
 
@@ -23,10 +26,13 @@ class GeometryComponent implements BlockComponent {
 	}
 
 	public function getValue(): CompoundTag {
-		return CompoundTag::create()
-			->setTag("bone_visibility", $this->boneVisibility)
-			->setString("culling", "")
-			->setString("identifier", $this->geometry);
+		$data = CompoundTag::create();
+		$data->setString("culling", "");
+		$data->setString("identifier", $this->geometry);
+		if($this->enableBone){
+			$data->setTag("bone_visibility", $this->boneVisibility);
+		}
+		return $data;
 	}
 
 	/**
