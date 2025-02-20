@@ -17,9 +17,9 @@ use customiesdevs\customies\item\component\DurabilitySensorComponent;
 use customiesdevs\customies\item\component\DyeableComponent;
 use customiesdevs\customies\item\component\EnchantableSlotComponent;
 use customiesdevs\customies\item\component\EnchantableValueComponent;
-use customiesdevs\customies\item\component\extra\BlockPlacerComponent;
-use customiesdevs\customies\item\component\extra\FrameCountComponent;
-use customiesdevs\customies\item\component\extra\MiningSpeedComponent;
+use customiesdevs\customies\item\component\unknown_properties\BlockPlacerComponent;
+use customiesdevs\customies\item\component\unknown_properties\FrameCountComponent;
+use customiesdevs\customies\item\component\unknown_properties\MiningSpeedComponent;
 use customiesdevs\customies\item\component\FoodComponent;
 use customiesdevs\customies\item\component\FuelComponent;
 use customiesdevs\customies\item\component\GlintComponent;
@@ -48,8 +48,8 @@ use customiesdevs\customies\item\component\UseAnimationComponent;
 use customiesdevs\customies\item\component\UseDurationComponent;
 use customiesdevs\customies\item\component\UseModifiersComponent;
 use customiesdevs\customies\item\component\WearableComponent;
+use customiesdevs\customies\item\ItemDataTypes;
 use customiesdevs\customies\util\NBT;
-
 use pocketmine\block\VanillaItems;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\entity\Consumable;
@@ -121,19 +121,19 @@ trait ItemComponentsTrait {
 		$this->addComponent(new MiningSpeedComponent(1));
 		$this->addComponent(new ShouldDespawnComponent(true));
 		// $this->addComponent(new StackedByDataComponent(true));
-		$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_NONE));
+		$this->addComponent(new UseAnimationComponent(ItemDataTypes::ANIMATION_NONE));
 		if($this instanceof Item){
 			$this->addComponent(new CanDestroyInCreativeComponent(true));
 			$this->addComponent(new AllowOffHandComponent(false));
-			$this->addComponent(new EnchantableSlotComponent(EnchantableSlotComponent::SLOT_ALL));
+			$this->addComponent(new EnchantableSlotComponent(ItemDataTypes::SLOT_ALL));
 			$this->addComponent(new EnchantableValueComponent(1));
 			if($this->getName() !== "Unknown"){
 				$this->addComponent(new DisplayNameComponent($this->getName()));
 			}
 			if($this->getFuelTime() > 0) {
 				$this->addComponent(new FuelComponent($this->getFuelTime()));
-				$this->addComponent(new TagsComponent([TagsComponent::TAG_FUEL]));
-				$this->addComponent(new ItemTagsComponent([ItemTagsComponent::TAG_FUEL]));
+				$this->addComponent(new TagsComponent([ItemDataTypes::TAG_FUEL]));
+				$this->addComponent(new ItemTagsComponent([ItemDataTypes::TAG_FUEL]));
 			}
 			if($this->getCooldownTicks() > 0){
 				$this->addComponent(new StackedByDataComponent(false));
@@ -143,32 +143,32 @@ trait ItemComponentsTrait {
 		}
 		if($this instanceof Armor) {
 			$slot = match ($this->getArmorSlot()) {
-				ArmorInventory::SLOT_HEAD => WearableComponent::SLOT_ARMOR_HEAD,
-				ArmorInventory::SLOT_CHEST => WearableComponent::SLOT_ARMOR_CHEST,
-				ArmorInventory::SLOT_LEGS => WearableComponent::SLOT_ARMOR_LEGS,
-				ArmorInventory::SLOT_FEET => WearableComponent::SLOT_ARMOR_FEET
+				ArmorInventory::SLOT_HEAD => ItemDataTypes::SLOT_ARMOR_HEAD,
+				ArmorInventory::SLOT_CHEST => ItemDataTypes::SLOT_ARMOR_CHEST,
+				ArmorInventory::SLOT_LEGS => ItemDataTypes::SLOT_ARMOR_LEGS,
+				ArmorInventory::SLOT_FEET => ItemDataTypes::SLOT_ARMOR_FEET
 			};
 			$this->addComponent(new WearableComponent($slot, $this->getDefensePoints()));
-			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_ARMOR]));
-			$this->addComponent(new ItemTagsComponent([ItemTagsComponent::TAG_IS_ARMOR]));
-			$this->addComponent(new TagsComponent([TagsComponent::TAG_TRIMMABLE]));
-			$this->addComponent(new ItemTagsComponent([ItemTagsComponent::TAG_TRIMMABLE]));
+			$this->addComponent(new TagsComponent([ItemDataTypes::TAG_IS_ARMOR]));
+			$this->addComponent(new ItemTagsComponent([ItemDataTypes::TAG_IS_ARMOR]));
+			$this->addComponent(new TagsComponent([ItemDataTypes::TAG_TRIMMABLE]));
+			$this->addComponent(new ItemTagsComponent([ItemDataTypes::TAG_TRIMMABLE]));
 			$this->addComponent(new StackedByDataComponent(false));
 		}
 		if($this instanceof Consumable) {
 			if($this instanceof Food || $this instanceof FoodSource) {
 				$this->addComponent(new FoodComponent(!$this->requiresHunger()));
-				$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_FOOD]));
-				$this->addComponent(new ItemTagsComponent([ItemTagsComponent::TAG_IS_FOOD]));
-				$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_EAT));
-				$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_EAT));
+				$this->addComponent(new TagsComponent([ItemDataTypes::TAG_IS_FOOD]));
+				$this->addComponent(new ItemTagsComponent([ItemDataTypes::TAG_IS_FOOD]));
+				$this->addComponent(new UseAnimationComponent(ItemDataTypes::ANIMATION_EAT));
+				$this->addComponent(new UseAnimationComponent(ItemDataTypes::ANIMATION_EAT));
 				$this->addComponent(new UseModifiersComponent(0.32, 1.6));
 			}
 			$this->addComponent(new UseModifiersComponent(0.35, 1.6));
-			$this->addComponent(new TagsComponent([TagsComponent::TAG_IS_FOOD]));
-			$this->addComponent(new ItemTagsComponent([ItemTagsComponent::TAG_IS_FOOD]));
-			$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_EAT));
-			$this->addComponent(new UseAnimationComponent(UseAnimationComponent::ANIMATION_EAT));
+			$this->addComponent(new TagsComponent([ItemDataTypes::TAG_IS_FOOD]));
+			$this->addComponent(new ItemTagsComponent([ItemDataTypes::TAG_IS_FOOD]));
+			$this->addComponent(new UseAnimationComponent(ItemDataTypes::ANIMATION_EAT));
+			$this->addComponent(new UseAnimationComponent(ItemDataTypes::ANIMATION_EAT));
 			
 		}
 		if($this instanceof Durable) {
@@ -180,8 +180,8 @@ trait ItemComponentsTrait {
 			$this->addComponent(new StackedByDataComponent(false));
 			if($this instanceof Sword){
 				$this->addComponent(new CanDestroyInCreativeComponent(false));
-				$this->addComponent(new EnchantableSlotComponent(EnchantableSlotComponent::SLOT_SWORD));
-				$this->addComponent(new EnchantableValueComponent(EnchantableValueComponent::TOOL_NETHERITE));
+				$this->addComponent(new EnchantableSlotComponent(ItemDataTypes::SLOT_SWORD));
+				$this->addComponent(new EnchantableValueComponent(ItemDataTypes::TOOL_NETHERITE));
 				if($this->getAttackPoints() > 0){
 					$this->addComponent(new DamageComponent($this->getAttackPoints() - 1));
 				}

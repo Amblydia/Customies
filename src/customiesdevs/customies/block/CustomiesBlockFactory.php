@@ -191,7 +191,7 @@ final class CustomiesBlockFactory {
 			$root = $entry->getStates()->getRoot()
 				->setTag("vanilla_block_data", CompoundTag::create()
 					->setInt("block_id", 10000 + $i)
-					->setString("material", BlockTypeTags::DIRT)
+					->setString("material", "dirt")
 				);
 			$this->blockPaletteEntries[$i] = new BlockPaletteEntry($entry->getName(), new CacheableNbt($root));
 		}

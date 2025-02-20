@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\item\component\extra;
+namespace customiesdevs\customies\item\component\unknown_properties;
 
 use pocketmine\block\Block;
 use pocketmine\world\format\io\GlobalBlockStateHandlers;

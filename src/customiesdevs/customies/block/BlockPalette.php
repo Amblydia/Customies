@@ -23,7 +23,7 @@ final class BlockPalette {
 	use SingletonTrait;
 
 	/** @var BlockStateDictionaryEntry[] */
-	private array $states;
+	private array $states = [];
 	/** @var BlockStateDictionaryEntry[] */
 	private array $customStates = [];
 

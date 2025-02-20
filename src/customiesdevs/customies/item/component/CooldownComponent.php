@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item\component;
 
-use pocketmine\item\ItemCooldownTags;
-
 final class CooldownComponent implements ItemComponent {
 
 	public const CATEGORY_SHIELD = "minecraft:shield";

@@ -31,7 +31,7 @@ trait RotatableTrait {
 	 */
 	public function getPermutations(): array {
 		return [
-			(new Permutation("q.block_property('customies:rotation') == 2"))
+			(new Permutation("q.block_state('customies:rotation') == 2"))
 				->withComponent("minecraft:transformation", CompoundTag::create()
 					->setInt("RX", 0)
 					->setInt("RY", 0)
@@ -43,7 +43,7 @@ trait RotatableTrait {
 					->setFloat("TY", 0.0)
 					->setFloat("TZ", 0.0)
 					->setInt("hasJsonVersionBeforeValidation", 0)),
-			(new Permutation("q.block_property('customies:rotation') == 3"))
+			(new Permutation("q.block_state('customies:rotation') == 3"))
 				->withComponent("minecraft:transformation", CompoundTag::create()
 					->setInt("RX", 0)
 					->setInt("RY", 2)
@@ -55,7 +55,7 @@ trait RotatableTrait {
 					->setFloat("TY", 0.0)
 					->setFloat("TZ", 0.0)
 					->setInt("hasJsonVersionBeforeValidation", 0)),
-			(new Permutation("q.block_property('customies:rotation') == 4"))
+			(new Permutation("q.block_state('customies:rotation') == 4"))
 				->withComponent("minecraft:transformation", CompoundTag::create()
 					->setInt("RX", 0)
 					->setInt("RY", 1)
@@ -67,7 +67,7 @@ trait RotatableTrait {
 					->setFloat("TY", 0.0)
 					->setFloat("TZ", 0.0)
 					->setInt("hasJsonVersionBeforeValidation", 0)),
-			(new Permutation("q.block_property('customies:rotation') == 5"))
+			(new Permutation("q.block_state('customies:rotation') == 5"))
 				->withComponent("minecraft:transformation", CompoundTag::create()
 					->setInt("RX", 0)
 					->setInt("RY", 3)

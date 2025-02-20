@@ -19,7 +19,7 @@ use pocketmine\block\Opaque;
 trait BlockComponentsTrait {
 	
 	/** @var BlockComponent[] */
-	private array $components;
+	private array $components = [];
 
 	public function addComponent(BlockComponent $component): void {
 		$this->components[$component->getName()] = $component;
@@ -59,7 +59,9 @@ trait BlockComponentsTrait {
 			$this->addComponent(new DisplayNameComponent($this->getName()));
 		}
 		if($this instanceof Opaque) {
-			$this->addComponent(new MaterialInstancesComponent("*", $texture, MaterialInstancesComponent::RENDER_METHOD_OPAQUE));
+			$materialInstance = new MaterialInstancesComponent();
+			$materialInstance->addTarget("*", $texture, MaterialInstancesComponent::RENDER_METHOD_OPAQUE, true, true);
+			$this->addComponent($materialInstance);
 		}
 	}
 }

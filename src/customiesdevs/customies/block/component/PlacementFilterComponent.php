@@ -8,7 +8,7 @@ use pocketmine\nbt\tag\ListTag;
 class PlacementFilterComponent implements BlockComponent {
 
 	private ?array $allowed_faces;
-	private array $block_filter;
+	private array $block_filter = [];
 
 	/**
 	 * Sets rules for under what conditions the block can be placed/survive

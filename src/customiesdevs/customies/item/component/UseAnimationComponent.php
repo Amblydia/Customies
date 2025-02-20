@@ -3,26 +3,17 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item\component;
 
-final class UseAnimationComponent implements ItemComponent {
+use customiesdevs\customies\item\ItemDataTypes;
 
-	public const ANIMATION_NONE = 0; // None
-	public const ANIMATION_EAT = 1; // Eat
-	public const ANIMATION_DRINK = 2; // Drink
-	public const ANIMATION_BLOCK = 3; // Block
-	public const ANIMATION_BOW = 4; // Bow
-	public const ANIMATION_CAMERA = 5; // Camera
-	public const ANIMATION_SPEAR = 6; // Spear
-	public const ANIMATION_CROSSBOW = 9; // Crossbow
-	public const ANIMATION_SPYGLASS = 10; // SpyGlass
-	public const ANIMATION_BRUSH = 12; // Brush
+final class UseAnimationComponent implements ItemComponent {
 
 	private int $value;
 
 	/**
 	 * Determines which animation plays when using an item.
-	 * @param int $value Specifies which animation to play when the the item is used, Default is set to `0`
+	 * @param int $value Specifies which animation to play when the the item is used, Default is set to `NONE`
 	 */
-	public function __construct(int $value = UseAnimationComponent::ANIMATION_NONE) {
+	public function __construct(int $value = ItemDataTypes::ANIMATION_NONE) {
 		$this->value = $value;
 	}
 

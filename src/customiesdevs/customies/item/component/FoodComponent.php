@@ -5,8 +5,6 @@ namespace customiesdevs\customies\item\component;
 
 final class FoodComponent implements ItemComponent {
 
-	public const CHORUS_COOLDOWN = "chorusfruit";
-
 	private bool $canAlwaysEat;
 	private int $nutrition;
 	private float $saturationModifier;

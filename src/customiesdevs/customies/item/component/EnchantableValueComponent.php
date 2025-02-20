@@ -3,25 +3,9 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item\component;
 
-final class EnchantableValueComponent implements ItemComponent {
+use customiesdevs\customies\item\ItemDataTypes;
 
-	// Armor Enchantability
-	public const ARMOR_LEATHER = 15;
-	public const ARMOR_CHAIN = 12;
-	public const ARMOR_IRON = 9;
-	public const ARMOR_GOLD = 25;
-	public const ARMOR_DIAMOND = 10;
-	public const ARMOR_TURTLE = 9;
-	public const ARMOR_NETHERITE = 15;
-	public const ARMOR_OTHER = 1;
-	// Tool Enchantability
-	public const TOOL_WOOD = 15;
-	public const TOOL_STONE = 5;
-	public const TOOL_IRON = 14;
-	public const TOOL_GOLD = 22;
-	public const TOOL_DIAMOND = 10;
-	public const TOOL_NETHERITE = 15;
-	public const TOOL_OTHER = 1;
+final class EnchantableValueComponent implements ItemComponent {
 
 	private int $value;
 
@@ -30,7 +14,7 @@ final class EnchantableValueComponent implements ItemComponent {
 	 * @param int $value Specifies the value of the enchantment, Default is set to `1`
 	 * @throws \InvalidArgumentException if `$value` is below `0`
 	 */
-	public function __construct(int $value = 0) {
+	public function __construct(int $value = ItemDataTypes::TOOL_OTHER) {
 		if($value < 0){
 			throw new \InvalidArgumentException("value must be above or equal of 0");
 		}

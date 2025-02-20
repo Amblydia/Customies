@@ -8,7 +8,7 @@ use pocketmine\nbt\tag\ListTag;
 class CraftingTableComponent implements BlockComponent {
 
 	private string $tableName;
-	private array $craftingTags;
+	private array $craftingTags = [];
 	private int $gridSize;
 
 	/**

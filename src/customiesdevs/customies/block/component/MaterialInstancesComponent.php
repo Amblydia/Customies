@@ -19,36 +19,13 @@ class MaterialInstancesComponent implements BlockComponent {
 	public const RENDER_METHOD_BLEND = "blend";
 	public const RENDER_METHOD_OPAQUE = "opaque";
 
-	private string $target;
-	private string $texture;
-	private string $renderMethod;
-	private bool $ambientOcclusion;
-	private bool $faceDimming;
-	private string $tint_Method;
+	private array $targets = [];
 
 	/**
 	 * The material instances for a block. Maps face or material_instance names in a geometry file to an actual material instance. You can assign a material instance object to any of these faces: "up", "down", "north", "south", "east", "west", or "*"
-	 * @param string $target material_instance names
-	 * @param string $texture Texture name for the material.
-	 * @param string $renderMethod The render method to use
-	 * @param bool $ambientOcclusion Should this material have ambient occlusion applied when lighting? If true, shadows will be created around and underneath the block.
-	 * @param bool $faceDimming Should this material be dimmed by the direction it's facing?
-	 * @param string $tint_Method idk
 	 */
-	public function __construct(
-		string $target, 
-		string $texture, 
-		string $renderMethod = MaterialInstancesComponent::RENDER_METHOD_OPAQUE, 
-		bool $ambientOcclusion = true, 
-		bool $faceDimming = true,
-		string $tint_Method = "none"
-	) {
-		$this->target = $target;
-		$this->texture = $texture;
-		$this->ambientOcclusion = $ambientOcclusion;
-		$this->faceDimming = $faceDimming;
-		$this->renderMethod = $renderMethod;
-		$this->tint_Method = $tint_Method;
+	public function __construct() {
+		$this->targets = [];
 	}
 
 	public function getName(): string {
@@ -56,16 +33,57 @@ class MaterialInstancesComponent implements BlockComponent {
 	}
 
 	public function getValue(): CompoundTag {
+		$materialsTag = CompoundTag::create();
+		foreach($this->targets as $target => $properties){
+			$materialTag = CompoundTag::create()
+				->setString("texture", $properties["texture"]);
+			if(isset($properties["render_method"])){
+				$materialTag->setString("render_method", $properties["render_method"]);
+			}
+			if(isset($properties["ambient_occlusion"])){
+				$materialTag->setByte("ambient_occlusion", $properties["ambient_occlusion"] ? 1 : 0);
+			}
+			if(isset($properties["face_dimming"])){
+				$materialTag->setByte("face_dimming", $properties["face_dimming"] ? 1 : 0);
+			}
+			if(isset($properties["tint_method"])){
+				$materialTag->setString("tint_method", $properties["tint_method"]);
+			}
+			$materialsTag->setTag($target, $materialTag);
+		}
 		return CompoundTag::create()
 			->setTag("mappings", CompoundTag::create())
-			->setTag("materials", CompoundTag::create()
-				->setTag($this->target, CompoundTag::create()
-					->setString("texture", $this->texture)
-					->setString("render_method", $this->renderMethod)
-					->setByte("face_dimming", $this->faceDimming ? 1 : 0)
-					->setByte("ambient_occlusion", $this->ambientOcclusion ? 1 : 0)
-					->setString("tint_method", $this->tint_Method)
-				)
-			);
+			->setTag("materials", $materialsTag);
+	}
+
+	/** Get the List of Targets added to the component */
+	public function getTargets(): array {
+		return $this->targets;
+	}
+
+	/**
+     * Adds a target to the component.
+     * @param string $target - Eg: `MaterialInstancesComponent::TARGET_ALL`
+	 * @param string $texture - Eg: `custom_texture`
+	 * @param string $renderMethod - Eg: `RENDER_METHOD_OPAQUE`
+	 * @param bool $ambientOcclusion Eg: `true`
+	 * @param bool $faceDimming Eg: true
+	 * @param string $tintMethod - default `none`
+     */
+	public function addTarget(
+		string $target = MaterialInstancesComponent::TARGET_ALL,
+		string $texture,
+		string $renderMethod = MaterialInstancesComponent::RENDER_METHOD_OPAQUE,
+		bool $ambientOcclusion = true,
+		bool $faceDimming = true,
+		string $tintMethod = "none"): MaterialInstancesComponent {
+		$this->targets[$target] = [
+			"texture" => $texture,
+			"render_method" => $renderMethod,
+			"ambient_occlusion" => $ambientOcclusion,
+			"face_dimming" => $faceDimming,
+			"tint_method" => $tintMethod
+		];
+		return $this;
 	}
 }

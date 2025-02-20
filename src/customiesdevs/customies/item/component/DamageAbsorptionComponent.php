@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item\component;
 
+use customiesdevs\customies\item\ItemDataTypes;
+
 final class DamageAbsorptionComponent implements ItemComponent {
 
     private ?array $cause = [];
@@ -13,7 +15,7 @@ final class DamageAbsorptionComponent implements ItemComponent {
 	 * @param array $cause List of damage causes (such as entity_attack and magma) that can be absorbed by the item.
      * @throws \InvalidArgumentException if `$cause` variable is empty.
 	 */
-	public function __construct(array $cause = ["all"]) {
+	public function __construct(array $cause = [ItemDataTypes::CAUSE_ALL]) {
 		if(empty($cause)){
 			throw new \InvalidArgumentException("cause variable is empty");
 		}
