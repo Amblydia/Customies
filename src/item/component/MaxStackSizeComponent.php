@@ -19,10 +19,8 @@ final class MaxStackSizeComponent implements ItemComponent {
 		return 'minecraft:max_stack_size';
 	}
 
-	public function getValue(): array {
-		return [
-			"value" => $this->maxStackSize
-		];
+	public function getValue(): int {
+		return $this->maxStackSize;
 	}
 
 	public function getPropertyMapping(): ?array {
