@@ -54,8 +54,11 @@ class CollisionBoxComponent implements BlockComponent {
 			$convertedBoxes[] = $box->toNbtArray();
 		}
 		//if no boxes are defined we add a default full block box
-		if(empty($convertedBoxes)) {
+		if(empty($convertedBoxes) && $this->enabled) {
 			$convertedBoxes[] = (new Box(new Vector3(-8, 0, -8), new Vector3(16, 16, 16)))->toNbtArray();
+		}
+		if(!$this->enabled) {
+			$convertedBoxes[] = [];
 		}
 		return [
 			"boxes" => $convertedBoxes,

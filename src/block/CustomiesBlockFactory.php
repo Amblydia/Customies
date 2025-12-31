@@ -132,6 +132,12 @@ final class CustomiesBlockFactory {
 		$nbt = CompoundTag::create();
 		$components = CompoundTag::create();
 
+		$nbt->setTag("menu_category", CompoundTag::create()
+			->setString("category", $creativeInfo->getCategory())
+			->setString("group", $creativeInfo->getGroup())
+			->setByte("is_hidden_in_commands", 0));
+
+		// Handle block components
 		if($block instanceof BlockComponents) {
 			foreach ($block->getComponents() as $component) {
 				$tag = NBT::getTagType($component->getValue());
@@ -141,13 +147,8 @@ final class CustomiesBlockFactory {
 				$components->setTag($component->getName(), $tag);
 			}
 		}
-		if($creativeInfo !== null) {
-			$nbt->setTag("menu_category", CompoundTag::create()
-				->setString("category", $creativeInfo->getCategory())
-				->setString("group", $creativeInfo->getGroup())
-				->setByte("is_hidden_in_commands", 0));
-		}
 
+		// Handle block permutations and states
 		if($block instanceof BlockPermutations) {
 			$blockPropertyNames = $blockPropertyValues = $blockProperties = [];
 			foreach($block->getStates() as $blockProperty){

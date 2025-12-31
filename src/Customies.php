@@ -4,8 +4,10 @@ declare(strict_types=1);
 namespace customiesdevs\customies;
 
 use customiesdevs\customies\block\CustomiesBlockFactory;
-use customiesdevs\customies\block\example\ExampleBlock;
+use customiesdevs\customies\example\ExampleBlock;
+use customiesdevs\customies\example\ExampleItem;
 use customiesdevs\customies\item\CreativeInventoryInfo;
+use customiesdevs\customies\item\CustomiesItemFactory;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
@@ -23,6 +25,12 @@ final class Customies extends PluginBase {
 		CustomiesBlockFactory::getInstance()->registerBlock(
 			static fn() => new ExampleBlock(),
 			"customies:example_block",
+			new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_ITEMS)
+		);
+
+		CustomiesItemFactory::getInstance()->registerItem(
+			fn() => new ExampleItem(),
+			"customies:example_item",
 			new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_ITEMS)
 		);
 

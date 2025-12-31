@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace customiesdevs\customies\block\example;
+namespace customiesdevs\customies\example;
 
 use customiesdevs\customies\block\component\BlockComponents;
 use customiesdevs\customies\block\component\BlockComponentsTrait;
+use customiesdevs\customies\block\component\CollisionBoxComponent;
 use customiesdevs\customies\block\component\GeometryComponent;
 use customiesdevs\customies\block\component\MaterialInstancesComponent;
 use customiesdevs\customies\block\component\TransformationComponent;
@@ -40,7 +41,7 @@ class ExampleBlock extends Block implements BlockComponents, BlockPermutations {
 		);
 		// Geometry - full block
 		$this->addComponent(new GeometryComponent("minecraft:geometry.full_block"));
-
+		$this->addComponent(new CollisionBoxComponent(false));
 		// Material instances - bark on sides, tops on up/down
 		$this->addComponent(new MaterialInstancesComponent([
 			new Material(Material::TARGET_ALL, "bum_template_bark"),
@@ -48,6 +49,7 @@ class ExampleBlock extends Block implements BlockComponents, BlockPermutations {
 			new Material(Material::TARGET_DOWN, "bum_template_tops"),
 		]));
         $this->addState(new BlockState("minecraft:block_face", ["north", "south", "east", "west", "up", "down"]));
+		$this->setCurrentStates([$this->axis]);
         $this->addPermutations([
 			new BlockPermutation(
 				"q.block_state('minecraft:block_face') == 'west' || q.block_state('minecraft:block_face') == 'east'",
@@ -62,10 +64,6 @@ class ExampleBlock extends Block implements BlockComponents, BlockPermutations {
 				new TransformationComponent(new Vector3(90, 0, 0))
 			)
 		]);
-	}
-
-	public function getCurrentStates(): array {
-		return [$this->axis];
 	}
 
 	public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null): bool {

@@ -14,7 +14,7 @@ trait ItemComponentsTrait {
 	 *
 	 * @var array<string, ItemComponent>
 	 */
-	private array $components;
+	private array $components = [];
 
 	/**
 	 * Adds a component to the item.

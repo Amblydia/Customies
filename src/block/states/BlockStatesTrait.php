@@ -10,6 +10,8 @@ trait BlockStatesTrait {
 	 */
 	private array $states = [];
 
+	private array $currentStates = [];
+
 	/**
 	 * Adds a state to the block.
 	 * @param BlockState $state
@@ -42,5 +44,13 @@ trait BlockStatesTrait {
 	 */
 	public function getStates(): array {
 		return $this->states;
+	}
+
+	public function setCurrentStates(array $states): void {
+		$this->currentStates = $states;
+	}
+
+	public function getCurrentStates(): array {
+		return [$this->currentStates];
 	}
 }
