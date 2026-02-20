@@ -9,11 +9,11 @@ class BlockPermutation {
 
 	/**
 	 * @param string $condition The condition to evaluate for this permutation
-	 * @param BlockComponent $components The components to apply if the condition is met
+	 * @param BlockComponent $component The component to apply if the condition is met
 	 */
 	public function __construct(
 		private readonly string $condition,
-		private readonly BlockComponent $components
+		private readonly BlockComponent $component
 	) {}
 
 	/**
@@ -24,10 +24,11 @@ class BlockPermutation {
 	}
 
 	/**
-	 * Gets the components associated with this permutation.
+	 * Gets the component associated with this permutation.
+	 * @return BlockComponent
 	 */
-	public function getComponents(): BlockComponent {
-		return $this->components;
+	public function getComponent(): BlockComponent {
+		return $this->component;
 	}
 
 	/**
@@ -37,7 +38,7 @@ class BlockPermutation {
 		return [
 			"condition" => $this->condition,
 			"components" => [
-				$this->components->getName() => $this->components->getValue()
+				$this->component->getName() => $this->component->getValue()
 			]
 		];
 	}

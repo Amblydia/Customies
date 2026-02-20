@@ -6,7 +6,7 @@ namespace customiesdevs\customies\block\permutations\traits;
 use customiesdevs\customies\block\component\TransformationComponent;
 use customiesdevs\customies\block\permutations\BlockPermutation;
 use customiesdevs\customies\block\permutations\BlockPermutationsTrait;
-use customiesdevs\customies\block\states\BlockState;
+use customiesdevs\customies\block\states\vanilla\BlockFaceState;
 use pocketmine\block\Block;
 use pocketmine\block\utils\AnyFacingTrait;
 use pocketmine\data\bedrock\block\convert\BlockStateReader;
@@ -27,9 +27,7 @@ trait BlockFaceRotationTrait {
 	use AnyFacingTrait;
 
 	protected function initStates(): void {
-		$this->addState(new BlockState("minecraft:block_face",
-			["down", "up", "north", "south", "east", "west"]
-		));
+		$this->addState(new BlockFaceState());
 	}
 
 	protected function initPermutations(): void {

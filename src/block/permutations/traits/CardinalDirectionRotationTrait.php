@@ -6,7 +6,7 @@ namespace customiesdevs\customies\block\permutations\traits;
 use customiesdevs\customies\block\component\TransformationComponent;
 use customiesdevs\customies\block\permutations\BlockPermutation;
 use customiesdevs\customies\block\permutations\BlockPermutationsTrait;
-use customiesdevs\customies\block\states\BlockState;
+use customiesdevs\customies\block\states\vanilla\CardinalDirectionState;
 use pocketmine\block\Block;
 use pocketmine\block\utils\FacesOppositePlacingPlayerTrait;
 use pocketmine\data\bedrock\block\convert\BlockStateReader;
@@ -27,9 +27,7 @@ trait CardinalDirectionRotationTrait {
 	use FacesOppositePlacingPlayerTrait;
 
 	protected function initStates(): void {
-		$this->addState(new BlockState("minecraft:cardinal_direction",
-			["north", "south", "west", "east"]
-		));
+		$this->addState(new CardinalDirectionState());
 	}
 
 	protected function initPermutations(): void {
