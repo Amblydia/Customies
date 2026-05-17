@@ -11,6 +11,8 @@ final class FlowerPottableComponent implements BlockComponent {
 	}
 
 	public function getValue(): array {
-		return [];
+		return [
+			"usePreR26U2FlowerPotOffset" => false
+		];
 	}
 }

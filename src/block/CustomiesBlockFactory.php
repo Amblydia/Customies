@@ -5,6 +5,7 @@ namespace customiesdevs\customies\block;
 
 use Closure;
 use customiesdevs\customies\block\component\BlockComponents;
+use customiesdevs\customies\block\component\BlockTagsComponent;
 use customiesdevs\customies\block\permutations\BlockPermutation;
 use customiesdevs\customies\block\permutations\BlockPermutations;
 use customiesdevs\customies\block\permutations\Permutations;
@@ -20,6 +21,7 @@ use pocketmine\data\bedrock\block\convert\BlockStateReader;
 use pocketmine\data\bedrock\block\convert\BlockStateWriter;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\ListTag;
+use pocketmine\nbt\tag\StringTag;
 use pocketmine\network\mcpe\protocol\types\BlockPaletteEntry;
 use pocketmine\network\mcpe\protocol\types\CacheableNbt;
 use pocketmine\Server;
@@ -84,7 +86,7 @@ final class CustomiesBlockFactory {
 	 * provided to allow for custom block state serialization.
 	 * @param Closure $blockFunc A closure that returns a new instance of the block to register.
 	 * @param string $identifier The unique identifier for the block (e.g. "namespace:block_name").
-	 * @param CreativeInventoryInfo $creativeInfo Creative inventory information for the block. Default set to `Equipment` Category.
+	 * @param CreativeInventoryInfo $creativeInfo Creative inventory information for the block. Default set to `Construction` Category.
 	 * @param (Closure(BlockStateWriter): Block)|null $serializer Optional closure that takes a BlockStateWriter and returns it after writing the block state.
 	 * @param (Closure(Block): BlockStateReader)|null $deserializer Optional closure that takes a BlockStateReader and returns a new instance of the block after reading the state.
 	 * @throws InvalidArgumentException If the blockFunc does not return a Block instance.
@@ -92,7 +94,7 @@ final class CustomiesBlockFactory {
 	public function registerBlock(
 		Closure $blockFunc,
 		string $identifier,
-		CreativeInventoryInfo $creativeInfo = new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_EQUIPMENT),
+		CreativeInventoryInfo $creativeInfo = new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_CONSTRUCTION),
 		?Closure $serializer = null,
 		?Closure $deserializer = null
 	): void {
@@ -107,9 +109,16 @@ final class CustomiesBlockFactory {
 
 		$nbtTag = CompoundTag::create();
 		$componentsTag = CompoundTag::create();
+		$blockTags = [];
+
 		// Adds Components to Block
 		if($block instanceof BlockComponents){
 			foreach($block->getComponents() as $component){
+				// Add BlockTags to array
+				if($component instanceof BlockTagsComponent){
+					$blockTags = $component->getValue();
+					continue;
+				}
 				$tag = NBT::getTagType($component->getValue()) ?? throw new RuntimeException("Failed to get tag type for component: " . $component->getName());
 				$componentsTag->setTag($component->getName(), $tag);
 			}
@@ -174,7 +183,7 @@ final class CustomiesBlockFactory {
 		// The 'minecraft:on_player_placing' component is required for the client to predict block placement, making
 		// it a smoother experience for the end-user.
 		$componentsTag->setTag("minecraft:on_player_placing", CompoundTag::create());
-		$nbtTag->setTag("blockTags", new ListTag());
+		$nbtTag->setTag("blockTags", new ListTag(array_map(static fn(string $tag) => new StringTag($tag), $blockTags)));
 		$nbtTag->setTag("components", $componentsTag);
 		$nbtTag->setInt("molangVersion", 13);
 		// Registers the block to creative inventory

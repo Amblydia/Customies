@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace customiesdevs\customies\item\component;
 
-final class TagsComponent implements ItemComponent {
+final class ItemTagsComponent implements ItemComponent {
 
 	/** @var string[] */
 	private array $tags = [];

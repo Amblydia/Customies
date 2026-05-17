@@ -37,9 +37,9 @@ final class UseModifiersComponent implements ItemComponent {
 
 	public function getValue(): array {
 		$value = [
+			"emit_vibrations" => $this->emitVibrations,
 			"movement_modifier" => $this->movementModifier,
-			"use_duration" => $this->useDuration,
-			"emit_vibrations" => $this->emitVibrations
+			"use_duration" => $this->useDuration
 		];
 		if($this->startSound !== null){
 			$value['start_sound'] = $this->startSound;

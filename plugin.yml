@@ -3,8 +3,8 @@ description: A PocketMine-MP plugin that implements support for custom blocks, i
 
 main: customiesdevs\customies\Customies
 src-namespace-prefix: customiesdevs\customies
-version: 1.5.12
-api: 5.42.0
+version: 1.5.20
+api: 5.43.0
 
 authors:
   - DenielWorld
